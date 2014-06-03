@@ -37,11 +37,11 @@ public class Shop extends Activity {
 private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_fight.setImageResource(R.drawable.menu_click_02);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_fight.setImageResource(R.drawable.menu_02);
                           }  
        return false;
@@ -63,11 +63,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
    private ImageButton.OnTouchListener listener2=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_card.setImageResource(R.drawable.menu_click_03);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_card.setImageResource(R.drawable.menu_03);
                           }  
        return false;
@@ -79,7 +79,7 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
-           intent.setClass(Shop.this,Card.class);
+           intent.setClass(Shop.this,Cardt.class);
            startActivity(intent);
            finish();
        }
@@ -88,11 +88,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
    private ImageButton.OnTouchListener listener3=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_shop.setImageResource(R.drawable.menu_click_04);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_shop.setImageResource(R.drawable.menu_04);
                           }  
        return false;
@@ -113,11 +113,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
    private ImageButton.OnTouchListener listener4=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_home.setImageResource(R.drawable.menu_click_05);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_home.setImageResource(R.drawable.menu_05);
                           }  
        return false;
@@ -134,65 +134,10 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
            finish();
        }
    };
-   //取亂數
-   public int ran(){
-		return ((int) (Math.random()*10));
-	}
-   //抽Level 1的卡
-   public int draw_1(){
-	   int n=81;
-	   n+=ran();
-	   n=n%9;
-	   return (n+=1);
-   }
-   //抽Level 2的卡
-   public int draw_2(){
-	   int n=81;
-	   n+=ran();
-	   n=n%6;
-	   return (n+=10);
-   }
-   //抽Level 3的卡
-   public int draw_3(){
-	   int n=81;
-	   n+=ran();
-	   n=n%3;
-	   return (n+=16);
-   }
-   //button1 onclick要直行的動作
+   /*
    public int shop_1(){
-	   int bag1=ran()+90;
-	   if(bag1%100<90){
-		   return draw_1();
-	   }
-	   else{
-		   return draw_2();
-	   }	   
+	   int n;
+	   return n; 
    }
-   //button2 onclick要直行的動作
-   public int shop_2(){
-	   int bag1=ran()+90;
-	   if((bag1%100)<80){
-		   return draw_1();
-	   }
-	   else if((bag1%100)>80 && (bag1%100)<95){
-		   return draw_2();
-	   }
-	   else{
-		   return draw_3();
-	   }
-   }
-   //button3 onclick要直行的動作
-   public int shop_3(){
-	   int bag1=ran()+90;
-	   if((bag1%100)<70){
-		   return draw_1();
-	   }
-	   else if((bag1%100)>75 && (bag1%100)<90){
-		   return draw_2();
-	   }
-	   else{
-		   return draw_3();
-	   }
-   }
+   */
 }

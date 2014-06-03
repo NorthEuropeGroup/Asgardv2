@@ -20,7 +20,7 @@ public abstract class  AllCard {
 	public abstract int ATK();
 	public abstract int DEF();
 	public abstract int Agi();
-	//public abstract int price();
+//	public abstract int price();
 	//public abstract String[] src();
 
 }
