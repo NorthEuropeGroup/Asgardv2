@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/repeat_bk"
+    android:orientation="vertical"
+    android:weightSum="800" >
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="fill_parent"
+       android:layout_weight="182" >
+
+       <Button
+           android:id="@+id/Button01"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentTop="true"
+           android:text="card01" />
+
+       <Button
+           android:id="@+id/Button02"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_toRightOf="@+id/Button01"
+           android:text="card02" />
+
+       <Button
+           android:id="@+id/Button03"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_toRightOf="@+id/Button02"
+           android:text="card03" />
+
+       <Button
+           android:id="@+id/Button04"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:text="card04" />
+
+       <Button
+           android:id="@+id/Button05"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_below="@+id/Button01"
+           android:layout_marginTop="15dp"
+           android:text="card05" />
+
+       <Button
+           android:id="@+id/Button06"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button05"
+           android:layout_alignBottom="@+id/Button05"
+           android:layout_toRightOf="@+id/Button05"
+           android:text="card06" />
+
+       <Button
+           android:id="@+id/Button07"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button06"
+           android:layout_alignBottom="@+id/Button06"
+           android:layout_toRightOf="@+id/Button06"
+           android:text="card07" />
+
+       <Button
+           android:id="@+id/Button08"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button07"
+           android:layout_alignBottom="@+id/Button07"
+           android:layout_alignParentRight="true"
+           android:text="card08" />
+
+       <Button
+           android:id="@+id/Button09"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/Button05"
+           android:layout_marginTop="15dp"
+           android:text="card09" />
+
+       
+       <Button
+           android:id="@+id/Button10"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button09"
+           android:layout_alignBottom="@+id/Button09"
+            android:layout_toRightOf="@+id/Button09"
+           android:text="card10" />
+
+       <Button
+           android:id="@+id/Button11"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button10"
+           android:layout_alignBottom="@+id/Button10"
+            android:layout_toRightOf="@+id/Button10"
+           android:text="card11" />
+       
+       <Button
+           android:id="@+id/Button12"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button11"
+           android:layout_alignBottom="@+id/Button11"
+           android:layout_toRightOf="@+id/Button11"
+           android:layout_alignParentRight="true"
+           android:text="card12" />
+       
+       <Button
+           android:id="@+id/Button13"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/Button09"
+           android:layout_marginTop="15dp"       
+           android:text="card13" />    
+
+	   <Button
+           android:id="@+id/Button14"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button13"
+           android:layout_alignBottom="@+id/Button13"
+           android:layout_toRightOf="@+id/Button13"
+           android:text="card14" />
+       
+       <Button
+           android:id="@+id/Button15"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button14"
+           android:layout_alignBottom="@+id/Button14"
+           android:layout_toRightOf="@+id/Button14"
+           android:text="card15" />
+
+       <Button
+           android:id="@+id/Button16"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button15"
+           android:layout_alignBottom="@+id/Button15"
+           android:layout_toRightOf="@+id/Button15"
+           android:text="card16" />
+	   
+	   <Button
+           android:id="@+id/Button17"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/Button13"
+           android:layout_marginTop="15dp"
+           android:text="card17" />
+       
+       <Button
+           android:id="@+id/Button18"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/Button17"
+           android:layout_alignBottom="@+id/Button17"
+           android:layout_toRightOf="@+id/Button17"
+           android:text="card18" />
+
+   </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="618"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+         >
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:weightSum="480" >
+            
+             <ImageButton
+                 android:id="@+id/imageButton1"
+                 android:layout_height="match_parent"
+                 android:layout_width="wrap_content"
+                 android:background="#00000000"
+                 android:scaleType="centerInside"
+                 android:src="@drawable/menu_02" 
+                 android:layout_weight="128"
+                 />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="115"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/menu_03" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="116"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/menu_04" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="121"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            android:src="@drawable/menu_05" />
+ 
+        </LinearLayout>
+
+     </RelativeLayout>
+
+
+
+</LinearLayout>
+

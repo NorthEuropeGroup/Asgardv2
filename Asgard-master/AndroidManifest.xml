@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.asgard"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+       android:theme="@style/NoActionBar" >
+        <activity
+            android:name="com.example.asgard.Asgard"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+             <activity android:name="com.example.asgard.Card"></activity>
+             <activity android:name="com.example.asgard.card01"></activity>
+             <activity android:name="com.example.asgard.card02"></activity>
+             <activity android:name="com.example.asgard.card03"></activity>
+             <activity android:name="com.example.asgard.card04"></activity>
+             <activity android:name="com.example.asgard.card05"></activity>
+             <activity android:name="com.example.asgard.card06"></activity>
+             <activity android:name="com.example.asgard.card07"></activity>
+             <activity android:name="com.example.asgard.card08"></activity>
+             <activity android:name="com.example.asgard.card09"></activity>
+             <activity android:name="com.example.asgard.card10"></activity>
+             <activity android:name="com.example.asgard.card11"></activity>
+             <activity android:name="com.example.asgard.card12"></activity>
+             <activity android:name="com.example.asgard.card13"></activity>
+             <activity android:name="com.example.asgard.card14"></activity>
+             <activity android:name="com.example.asgard.card15"></activity>
+             <activity android:name="com.example.asgard.card16"></activity>
+             <activity android:name="com.example.asgard.card17"></activity>
+             <activity android:name="com.example.asgard.card18"></activity>
+             
+             <activity android:name="com.example.asgard.Fight"></activity>
+             <activity android:name="com.example.asgard.Shop"></activity>
+    </application>
+
+</manifest>

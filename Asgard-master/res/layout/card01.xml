@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:background="@drawable/repeat_bk"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/card01" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:orientation="horizontal"
+        android:weightSum="480"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="206.77"
+            android:orientation="vertical" >
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="189dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="81.23"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.41" >
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                             <TextView
+                  android:id="@+id/title"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:text="智者"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                                       <TextView
+                  android:id="@+id/intro"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:text="由眾神創造，擁有天下最高的智慧。" />
+                </LinearLayout>
+        		<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                   <TextView
+                  android:id="@+id/textView3"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="攻擊力 " />
+
+              <TextView
+                  android:id="@+id/atk"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="TextView" />
+                </LinearLayout>
+                	<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                          <TextView
+                  android:id="@+id/textView4"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="防禦力 " />
+
+              <TextView
+                  android:id="@+id/def"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="TextView" />
+                </LinearLayout>
+                	<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                          <TextView
+                  android:id="@+id/textView5"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="敏捷 " />
+
+              <TextView
+                  android:id="@+id/agi"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="TextView" />
+                </LinearLayout>
+                	<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                          <TextView
+                  android:id="@+id/textView6"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="血量 " />
+
+              <TextView
+                  android:id="@+id/hp"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="TextView" />
+                </LinearLayout>
+                	<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                          <TextView
+                  android:id="@+id/textView7"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="技能 " />
+
+              <TextView
+                  android:id="@+id/skill"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="TextView" />
+                </LinearLayout>
+                	<LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+             <TextView android:id="@+id/skill_intro" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content" 
+              android:text="直接攻擊對手心靈，造成傷害100" 
+              />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="100"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+    </LinearLayout></RelativeLayout>
