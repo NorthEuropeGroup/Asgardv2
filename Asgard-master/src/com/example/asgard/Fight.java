@@ -37,11 +37,11 @@ public class Fight extends Activity {
 private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_fight.setImageResource(R.drawable.menu_click_02);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_fight.setImageResource(R.drawable.menu_02);
                           }  
        return false;
@@ -63,11 +63,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
    private ImageButton.OnTouchListener listener2=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_card.setImageResource(R.drawable.menu_click_03);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_card.setImageResource(R.drawable.menu_03);
                           }  
        return false;
@@ -79,7 +79,7 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
-           intent.setClass(Fight.this,Card.class);
+           intent.setClass(Fight.this,Cardt.class);
            startActivity(intent);
            finish();
        }
@@ -88,11 +88,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
    private ImageButton.OnTouchListener listener3=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_shop.setImageResource(R.drawable.menu_click_04);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_shop.setImageResource(R.drawable.menu_04);
                           }  
        return false;
@@ -113,11 +113,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
    private ImageButton.OnTouchListener listener4=new ImageButton.OnTouchListener(){
        @Override
       public boolean onTouch(View arg0, MotionEvent motionEvent) {
-           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //�����霈��臬�憿
         	   button_home.setImageResource(R.drawable.menu_click_05);
 
            }  
-           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+           if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //韏瑚����敺抵��航�憿
         	   button_home.setImageResource(R.drawable.menu_05);
                           }  
        return false;
