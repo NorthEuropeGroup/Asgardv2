@@ -56,7 +56,7 @@ public class card12 extends Activity{
 			public int agi=Agi();
 
 			public  String[] Character(){
-				String[] arr={"»®®Ô¸¯¥§º¸","¥Û¥¨¤H","´¿»P¶ø¥Å¤ñ°¨¡A¦ı³Ü¾K«á·S«ã²³¯«¦Ó¦º¡C","¥¨¥Û°}","³y¦¨©Ò¦³¹ï¤â¶Ë®`25%"};
+				String[] arr={"èµ«æœ—è‘›å°¼çˆ¾","çŸ³å·¨äºº","æ›¾èˆ‡å¥§æ±€æ¯”é¦¬ï¼Œä½†å–é†‰å¾Œæƒ¹æ€’çœ¾ç¥è€Œæ­»ã€‚","å·¨çŸ³é™£","é€ æˆæ‰€æœ‰å°æ‰‹å‚·å®³25%"};
 				return arr; 
 			};
 			public  int level(){

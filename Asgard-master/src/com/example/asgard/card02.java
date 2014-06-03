@@ -39,7 +39,6 @@ public class card02 extends Activity{
 		  String agi=Integer.toString(info.agi); 
 		  String skillName=info.Character()[3]; 
 		  String skill_intro=info.Character()[4];
-		  String price=Integer.toString(info.price);
 		  public class info extends AllCard{
 				public String name=Character()[0];
 				public int level=level();
@@ -47,15 +46,13 @@ public class card02 extends Activity{
 				public String intro=Character()[2];
 				public String skillName=Character()[3];
 				public String skill_intro=Character()[4];
-				public int price=price();
 				public int hp=HP();
 				public int atk=ATK();
 				public int def=DEF();
 				public int agi=Agi();
-				//public String[] src=src();
 
 				public  String[] Character(){
-					String[] arr={"¥úºëÆF","ºëÆF","¾Ş§@¤j¦ÛµM¤O¶qªººëÆF­Ì¡C","¥úÂy","³y¦¨¶Ë®`20"};
+					String[] arr={"å…‰ç²¾éˆ","ç²¾éˆ","æ“ä½œå¤§è‡ªç„¶åŠ›é‡çš„ç²¾éˆå€‘ã€‚","å…‰çµ","é€ æˆå‚·å®³20"};
 					return arr; 
 				};
 				public  int level(){
@@ -79,14 +76,6 @@ public class card02 extends Activity{
 					int Agi=5;
 					return Agi;
 				};
-				public int price(){
-					int price=100;
-					return price;
-				};
-				//public String[] src(){
-					//String[] src={"@drawable/card01.jpg"};
-					//return src;
-				//};
 		  }
 	}
 

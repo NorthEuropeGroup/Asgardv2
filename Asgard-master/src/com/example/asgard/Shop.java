@@ -134,10 +134,65 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
            finish();
        }
    };
-   /*
-   public int shop_1(){
-	   int n;
-	   return n; 
+   //取亂數
+   public int ran(){
+		return ((int) (Math.random()*10));
+	}
+   //抽Level 1的卡
+   public int draw_1(){
+	   int n=81;
+	   n+=ran();
+	   n=n%9;
+	   return (n+=1);
    }
-   */
+   //抽Level 2的卡
+   public int draw_2(){
+	   int n=81;
+	   n+=ran();
+	   n=n%6;
+	   return (n+=10);
+   }
+   //抽Level 3的卡
+   public int draw_3(){
+	   int n=81;
+	   n+=ran();
+	   n=n%3;
+	   return (n+=16);
+   }
+   //button1 onclick要直行的動作
+   public int shop_1(){
+	   int bag1=ran()+90;
+	   if(bag1%100<90){
+		   return draw_1();
+	   }
+	   else{
+		   return draw_2();
+	   }	   
+   }
+   //button2 onclick要直行的動作
+   public int shop_2(){
+	   int bag1=ran()+90;
+	   if((bag1%100)<80){
+		   return draw_1();
+	   }
+	   else if((bag1%100)>80 && (bag1%100)<95){
+		   return draw_2();
+	   }
+	   else{
+		   return draw_3();
+	   }
+   }
+   //button3 onclick要直行的動作
+   public int shop_3(){
+	   int bag1=ran()+90;
+	   if((bag1%100)<70){
+		   return draw_1();
+	   }
+	   else if((bag1%100)>75 && (bag1%100)<90){
+		   return draw_2();
+	   }
+	   else{
+		   return draw_3();
+	   }
+   }
 }
