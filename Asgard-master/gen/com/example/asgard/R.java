@@ -66,6 +66,9 @@ containing a value of this type.
          */
         public static final int unselectedScale=0x7f010002;
     }
+    public static final class color {
+        public static final int yellow=0x7f050000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -74,8 +77,8 @@ containing a value of this type.
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int bk=0x7f020000;
@@ -94,27 +97,43 @@ containing a value of this type.
         public static final int card07=0x7f02000d;
         public static final int card07_s=0x7f02000e;
         public static final int card08=0x7f02000f;
-        public static final int card09=0x7f020010;
-        public static final int card10=0x7f020011;
-        public static final int card11=0x7f020012;
-        public static final int card12=0x7f020013;
-        public static final int card13=0x7f020014;
-        public static final int card14=0x7f020015;
-        public static final int card15=0x7f020016;
-        public static final int card16=0x7f020017;
-        public static final int card17=0x7f020018;
-        public static final int card18=0x7f020019;
-        public static final int ic_launcher=0x7f02001a;
-        public static final int menu_01=0x7f02001b;
-        public static final int menu_02=0x7f02001c;
-        public static final int menu_03=0x7f02001d;
-        public static final int menu_04=0x7f02001e;
-        public static final int menu_05=0x7f02001f;
-        public static final int menu_click_02=0x7f020020;
-        public static final int menu_click_03=0x7f020021;
-        public static final int menu_click_04=0x7f020022;
-        public static final int menu_click_05=0x7f020023;
-        public static final int repeat_bk=0x7f020024;
+        public static final int card08_s=0x7f020010;
+        public static final int card09=0x7f020011;
+        public static final int card09_s=0x7f020012;
+        public static final int card10=0x7f020013;
+        public static final int card10_s=0x7f020014;
+        public static final int card11=0x7f020015;
+        public static final int card11_s=0x7f020016;
+        public static final int card12=0x7f020017;
+        public static final int card12_s=0x7f020018;
+        public static final int card13=0x7f020019;
+        public static final int card13_s=0x7f02001a;
+        public static final int card14=0x7f02001b;
+        public static final int card14_s=0x7f02001c;
+        public static final int card15=0x7f02001d;
+        public static final int card15_s=0x7f02001e;
+        public static final int card16=0x7f02001f;
+        public static final int card16_s=0x7f020020;
+        public static final int card17=0x7f020021;
+        public static final int card17_s=0x7f020022;
+        public static final int card18=0x7f020023;
+        public static final int card18_s=0x7f020024;
+        public static final int card_button=0x7f020025;
+        public static final int ic_launcher=0x7f020026;
+        public static final int menu_01=0x7f020027;
+        public static final int menu_02=0x7f020028;
+        public static final int menu_03=0x7f020029;
+        public static final int menu_04=0x7f02002a;
+        public static final int menu_05=0x7f02002b;
+        public static final int menu_click_02=0x7f02002c;
+        public static final int menu_click_03=0x7f02002d;
+        public static final int menu_click_04=0x7f02002e;
+        public static final int menu_click_05=0x7f02002f;
+        public static final int repeat_bk=0x7f020030;
+        public static final int shop_b1=0x7f020031;
+        public static final int shop_b2=0x7f020032;
+        public static final int shop_b3=0x7f020033;
+        public static final int shop_money=0x7f020034;
     }
     public static final class id {
         public static final int Button01=0x7f040007;
@@ -135,7 +154,8 @@ containing a value of this type.
         public static final int Button16=0x7f040016;
         public static final int Button17=0x7f040017;
         public static final int Button18=0x7f040018;
-        public static final int action_settings=0x7f040027;
+        public static final int Money=0x7f04002a;
+        public static final int action_settings=0x7f04002b;
         public static final int agi=0x7f040020;
         public static final int atk=0x7f04001c;
         public static final int auto=0x7f040000;
@@ -146,6 +166,9 @@ containing a value of this type.
         public static final int imageButton2=0x7f040003;
         public static final int imageButton3=0x7f040004;
         public static final int imageButton4=0x7f040005;
+        public static final int imageButton5=0x7f040027;
+        public static final int imageButton6=0x7f040028;
+        public static final int imageButton7=0x7f040029;
         public static final int imageView1=0x7f040001;
         public static final int intro=0x7f04001a;
         public static final int skill=0x7f040024;
@@ -169,14 +192,14 @@ containing a value of this type.
         public static final int shop=0x7f030007;
     }
     public static final class menu {
-        public static final int asgard=0x7f080000;
-        public static final int cardt=0x7f080001;
+        public static final int asgard=0x7f090000;
+        public static final int cardt=0x7f090001;
     }
     public static final class string {
-        public static final int action_settings=0x7f060002;
-        public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060001;
-        public static final int title_activity_cardt=0x7f060003;
+        public static final int action_settings=0x7f070002;
+        public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070001;
+        public static final int title_activity_cardt=0x7f070003;
     }
     public static final class style {
         /** 
@@ -200,12 +223,12 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070002;
-        public static final int NoActionBar=0x7f070001;
+        public static final int AppTheme=0x7f080002;
+        public static final int NoActionBar=0x7f080001;
     }
     public static final class styleable {
         /** Attributes that can be used with a FancyCoverFlow.
