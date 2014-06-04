@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_cardt">Cardt</string>
     <string name="title_activity_user_connect1">UserConnect1</string>
+    <string name="title_activity_card_choose">CardChoose</string>
 
 </resources>
