@@ -82,6 +82,12 @@ public class showCard extends Activity{
 				String[] src={"@drawable/card01.jpg"};
 				return src;
 			};
+			public skill oneskill() {
+				
+				skill s = new skill(0,100);
+				return s;
+				
+			};
 	  }
 	  public  String[] Character(){
 			String[] arr={"克瓦西爾","智者","由眾神的創造，擁有天下最高的智慧。","心靈爆破","直接攻擊對手心靈，造成傷害100"};

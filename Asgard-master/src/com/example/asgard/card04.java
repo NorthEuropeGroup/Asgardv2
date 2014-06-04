@@ -84,5 +84,11 @@ public class card04 extends Activity{
 				int price=120;
 				return price;
 			};
+			public skill oneskill() {
+				
+				skill s = new skill(0,100);
+				return s;
+				
+			};
 	  }
 }

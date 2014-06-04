@@ -117,56 +117,65 @@ containing a value of this type.
         public static final int repeat_bk=0x7f020024;
     }
     public static final class id {
-        public static final int Button01=0x7f040007;
-        public static final int Button02=0x7f040008;
-        public static final int Button03=0x7f040009;
-        public static final int Button04=0x7f04000a;
-        public static final int Button05=0x7f04000b;
-        public static final int Button06=0x7f04000c;
-        public static final int Button07=0x7f04000d;
-        public static final int Button08=0x7f04000e;
-        public static final int Button09=0x7f04000f;
-        public static final int Button10=0x7f040010;
-        public static final int Button11=0x7f040011;
-        public static final int Button12=0x7f040012;
-        public static final int Button13=0x7f040013;
-        public static final int Button14=0x7f040014;
-        public static final int Button15=0x7f040015;
-        public static final int Button16=0x7f040016;
-        public static final int Button17=0x7f040017;
-        public static final int Button18=0x7f040018;
-        public static final int action_settings=0x7f040027;
-        public static final int agi=0x7f040020;
-        public static final int atk=0x7f04001c;
+        public static final int Button01=0x7f04000d;
+        public static final int Button02=0x7f04000e;
+        public static final int Button03=0x7f04000f;
+        public static final int Button04=0x7f040010;
+        public static final int Button05=0x7f040011;
+        public static final int Button06=0x7f040012;
+        public static final int Button07=0x7f040013;
+        public static final int Button08=0x7f040014;
+        public static final int Button09=0x7f040015;
+        public static final int Button10=0x7f040016;
+        public static final int Button11=0x7f040017;
+        public static final int Button12=0x7f040018;
+        public static final int Button13=0x7f040019;
+        public static final int Button14=0x7f04001a;
+        public static final int Button15=0x7f04001b;
+        public static final int Button16=0x7f04001c;
+        public static final int Button17=0x7f04001d;
+        public static final int Button18=0x7f04001e;
+        public static final int action_settings=0x7f04002d;
+        public static final int agi=0x7f040026;
+        public static final int atk=0x7f040022;
         public static final int auto=0x7f040000;
-        public static final int def=0x7f04001e;
+        public static final int connect=0x7f04000c;
+        public static final int def=0x7f040024;
+        public static final int editText1=0x7f04000a;
+        public static final int eip=0x7f040008;
+        public static final int euid=0x7f04000b;
         public static final int fcf=0x7f040006;
-        public static final int hp=0x7f040022;
+        public static final int hp=0x7f040028;
         public static final int imageButton1=0x7f040002;
         public static final int imageButton2=0x7f040003;
         public static final int imageButton3=0x7f040004;
         public static final int imageButton4=0x7f040005;
         public static final int imageView1=0x7f040001;
-        public static final int intro=0x7f04001a;
-        public static final int skill=0x7f040024;
-        public static final int skill_intro=0x7f040025;
-        public static final int textView3=0x7f04001b;
-        public static final int textView4=0x7f04001d;
-        public static final int textView5=0x7f04001f;
-        public static final int textView6=0x7f040021;
-        public static final int textView7=0x7f040023;
-        public static final int textView8=0x7f040026;
-        public static final int title=0x7f040019;
+        public static final int intro=0x7f040020;
+        public static final int skill=0x7f04002a;
+        public static final int skill_intro=0x7f04002b;
+        public static final int textView1=0x7f040007;
+        public static final int textView2=0x7f040009;
+        public static final int textView3=0x7f040021;
+        public static final int textView4=0x7f040023;
+        public static final int textView5=0x7f040025;
+        public static final int textView6=0x7f040027;
+        public static final int textView7=0x7f040029;
+        public static final int textView8=0x7f04002c;
+        public static final int title=0x7f04001f;
     }
     public static final class layout {
         public static final int activity_asgard=0x7f030000;
         public static final int activity_cardt=0x7f030001;
-        public static final int card=0x7f030002;
-        public static final int card01=0x7f030003;
-        public static final int card02=0x7f030004;
-        public static final int fight=0x7f030005;
-        public static final int fragment_cardt=0x7f030006;
-        public static final int shop=0x7f030007;
+        public static final int activity_user_connect1=0x7f030002;
+        public static final int card=0x7f030003;
+        public static final int card01=0x7f030004;
+        public static final int card02=0x7f030005;
+        public static final int cardchoose=0x7f030006;
+        public static final int fight=0x7f030007;
+        public static final int fragment_cardt=0x7f030008;
+        public static final int shop=0x7f030009;
+        public static final int uc=0x7f03000a;
     }
     public static final class menu {
         public static final int asgard=0x7f080000;
@@ -177,6 +186,7 @@ containing a value of this type.
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060001;
         public static final int title_activity_cardt=0x7f060003;
+        public static final int title_activity_user_connect1=0x7f060004;
     }
     public static final class style {
         /** 

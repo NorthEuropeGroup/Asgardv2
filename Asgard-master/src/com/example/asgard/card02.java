@@ -87,6 +87,12 @@ public class card02 extends Activity{
 					//String[] src={"@drawable/card01.jpg"};
 					//return src;
 				//};
+				public skill oneskill() {
+					
+					skill s = new skill(0,100);
+					return s;
+					
+				};
 		  }
 	}
 

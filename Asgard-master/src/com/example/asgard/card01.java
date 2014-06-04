@@ -53,6 +53,7 @@ public class card01 extends Activity{
 			public int atk=ATK();
 			public int def=DEF();
 			public int agi=Agi();
+			public skill Skill = oneskill();
 			public String[] src=src();
 
 			public  String[] Character(){
@@ -84,9 +85,18 @@ public class card01 extends Activity{
 				int price=100;
 				return price;
 			};
+			
 			public String[] src(){
 				String[] src={"@drawable/card01.jpg"};
 				return src;
+			}
+			
+			public skill oneskill() {
+				
+				skill s = new skill(0,100);
+				return s;
+				
 			};
+			
 	  }
 }
