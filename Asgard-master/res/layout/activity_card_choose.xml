@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/repeat_bk"
+    tools:context="${packageName}.${activityClass}" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/BattleCard1"
+                android:layout_width="132dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/card01" />
+
+            <ImageView
+                android:id="@+id/BattleCard2"
+                android:layout_width="132dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/card02" />
+
+        </LinearLayout>
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="2"
+		    android:gravity="center" >
+
+		    <Button
+		        android:id="@+id/fight"
+		        android:layout_width="266dp"
+		        android:layout_height="wrap_content"
+		        android:text="Fight" />
+		</LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

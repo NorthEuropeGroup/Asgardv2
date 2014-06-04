@@ -54,7 +54,7 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
-           intent.setClass(Asgard.this,CardChoose.class);
+           intent.setClass(Asgard.this,UserConnect1.class);
            startActivity(intent);
            //finish();
        }

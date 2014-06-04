@@ -1,6 +1,6 @@
 package com.example.asgard;
 
-public abstract class  AllCard {
+public abstract class  AllCard implements java.io.Serializable{
 	public String name=Character()[0];
 	public int level=level();
 	public String title=Character()[1];
@@ -12,7 +12,7 @@ public abstract class  AllCard {
 	public int atk=ATK();
 	public int def=DEF();
 	public int agi=Agi();
-	public skill Skill = oneskill();
+	//public skill Skill = oneskill();
 	//public String[] src=src();
 
 	public abstract String[] Character();
@@ -22,7 +22,7 @@ public abstract class  AllCard {
 	public abstract int DEF();
 	public abstract int Agi();
 	public abstract int price();
-	public abstract skill oneskill();
+	//public abstract skill oneskill();
 	//public abstract String[] src();
 
 }
