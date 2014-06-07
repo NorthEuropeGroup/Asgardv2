@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/repeat_bk"
+    android:orientation="vertical"
     tools:context="${packageName}.${activityClass}" >
 
     <TextView
@@ -42,9 +42,11 @@
         android:ems="10" />
 
     <Button
-        android:id="@+id/connect"
+        android:id="@+id/Go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connect" />
+        android:text="Go" />
+
+    
 
 </LinearLayout>

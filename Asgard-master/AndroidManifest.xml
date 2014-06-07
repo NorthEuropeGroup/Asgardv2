@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:theme="@style/NoActionBar" >
         <activity
-            android:name="com.example.asgard.Asgard"
+            android:name="com.example.asgard.UserConnect1"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,12 +75,20 @@
             android:label="@string/title_activity_cardt" >
         </activity>
         <activity
-            android:name="com.example.asgard.UserConnect1"
+            android:name="com.example.asgard.Asgard"
             android:label="@string/title_activity_user_connect1" >
         </activity>
         <activity
             android:name="com.example.asgard.CardChoose"
             android:label="@string/title_activity_card_choose" >
+        </activity>
+        <activity
+            android:name="com.example.asgard.List"
+            android:label="@string/title_activity_list" >
+        </activity>
+        <activity
+            android:name="com.example.asgard.CardChoose2"
+            android:label="@string/title_activity_card_choose2" >
         </activity>
     </application>
 

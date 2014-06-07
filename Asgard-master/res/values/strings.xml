@@ -7,5 +7,7 @@
     <string name="title_activity_cardt">Cardt</string>
     <string name="title_activity_user_connect1">UserConnect1</string>
     <string name="title_activity_card_choose">CardChoose</string>
+    <string name="title_activity_list">List</string>
+    <string name="title_activity_card_choose2">CardChoose2</string>
 
 </resources>

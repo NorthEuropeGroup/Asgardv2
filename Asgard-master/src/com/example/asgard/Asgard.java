@@ -13,10 +13,15 @@ public class Asgard extends Activity {
 	 private ImageButton button_card;
 	 private ImageButton button_shop;
 	 private ImageButton button_home;
-   @Override
+     String ip;
+     String ID;
+  @Override
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_asgard);
+       Bundle bData = this.getIntent().getExtras();
+       ip = bData.getString("ip");
+       ID = bData.getString("ID");
        button_fight = (ImageButton)findViewById(R.id.imageButton1);
        button_fight.setOnTouchListener(listener);
        button_fight.setOnClickListener(listener5);
@@ -54,7 +59,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
-           intent.setClass(Asgard.this,UserConnect1.class);
+           Bundle bData = new Bundle();
+           bData.putString("ip", ip);
+           bData.putString("ID",ID);
+           intent.putExtras(bData);
+           intent.setClass(Asgard.this,CardChoose.class);
            startActivity(intent);
            //finish();
        }
@@ -79,6 +88,10 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
+           Bundle bData = new Bundle();
+           bData.putString("ip", ip);
+           bData.putString("ID",ID);
+           intent.putExtras(bData);
            intent.setClass(Asgard.this,Cardt.class);
            startActivity(intent);
            finish();
@@ -104,6 +117,10 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
+           Bundle bData = new Bundle();
+           bData.putString("ip", ip);
+           bData.putString("ID",ID);
+           intent.putExtras(bData);
            intent.setClass(Asgard.this,Shop.class);
            startActivity(intent);
            finish();
@@ -129,6 +146,10 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
+           Bundle bData = new Bundle();
+           bData.putString("ip", ip);
+           bData.putString("ID",ID);
+           intent.putExtras(bData);
            intent.setClass(Asgard.this,Asgard.class);
            startActivity(intent);
            finish();

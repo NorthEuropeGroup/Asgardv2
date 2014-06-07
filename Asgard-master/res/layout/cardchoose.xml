@@ -14,20 +14,51 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center" >
+            android:gravity="center" 
+            android:orientation="horizontal">
+		<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+         android:layout_weight="1"
+         android:gravity="center"  >
 
-            <ImageView
-                android:id="@+id/BattleCard1"
-                android:layout_width="132dp"
+			<ImageView
+			    android:id="@+id/BattleCard1"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:src="@drawable/card01" 
+			     android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/card01" />
+                android:text="Change" 
+                 android:layout_weight="6"/>
 
+		</LinearLayout>
+		<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+         android:layout_weight="1"
+         android:gravity="center"  >
             <ImageView
-                android:id="@+id/BattleCard2"
-                android:layout_width="132dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/card02" />
+			    android:id="@+id/BattleCard2"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:src="@drawable/card02" 
+			     android:layout_weight="1"/>
 
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Change" 
+                 android:layout_weight="6"/>
+
+	</LinearLayout>
 			 <com.example.asgard.FancyCoverFlow
 			     android:id="@+id/fcf"
 			     android:layout_width="match_parent"

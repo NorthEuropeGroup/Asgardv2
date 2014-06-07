@@ -31,10 +31,16 @@ public class Card extends Activity {
 	 private Button button_card16;
 	 private Button button_card17;
 	 private Button button_card18;
+	 String ip;
+     String ID;
    @Override
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.card);
+       Bundle bData = this.getIntent().getExtras();
+       ip = bData.getString("ip");
+       ID = bData.getString("ID");
+       
        button_card01=(Button)findViewById(R.id.Button01);
        button_card01=(Button)findViewById(R.id.Button01);
        button_card01.setOnClickListener(new Button.OnClickListener(){
@@ -234,7 +240,11 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
-           intent.setClass(Card.this,Fight.class);
+           Bundle bData = new Bundle();
+           bData.putString("ip", ip);
+           bData.putString("ID",ID);
+           intent.putExtras(bData);
+           intent.setClass(Card.this,CardChoose.class);
            startActivity(intent);
            finish();
        }
@@ -259,6 +269,10 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
+           Bundle bData = new Bundle();
+           bData.putString("ip", ip);
+           bData.putString("ID",ID);
+           intent.putExtras(bData);
            intent.setClass(Card.this,Card.class);
            startActivity(intent);
            finish();
@@ -309,6 +323,10 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
        public void onClick(View arg0) {
            // TODO Auto-generated method stub
            Intent intent = new Intent();
+           Bundle bData = new Bundle();
+           bData.putString("ip", ip);
+           bData.putString("ID",ID);
+           intent.putExtras(bData);
            intent.setClass(Card.this,Asgard.class);
            startActivity(intent);
            finish();
