@@ -71,60 +71,7 @@ public class UserConnect1 extends Activity {
 				}
 				);
 	}
-	public class ClientReq extends Thread
-	{
-		public String ip;
-		public int port;
-		public String text;
-		public String uid;
-		public ClientReq()
-		{
-			ip = null;
-			port = 0;
-			uid = null;
-		}
-		public ClientReq(String tip,int tport,String tuid)
-		{
-			ip = tip;
-			port = tport;
-			uid = tuid;
-		}
-		@Override
-		public void run()
-		{
-			Socket socket = null;
-			try {
-				
-				// 宣告輸出至Server的Stream
-				DataOutputStream out ;//=new DataOutputStream(socket.getOutputStream());; 
-				// 宣告讀取自Server的物件
-				BufferedReader in;//= new BufferedReader(new InputStreamReader(socket.getInputStream()));;
-				while(true)
-				{
-					ClientReq.sleep(100);
-					socket = new Socket(ip,5000);
-					
-					out =new DataOutputStream(socket.getOutputStream());
-					in= new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					String message = uid+"#R\n";
-					
-					out.writeBytes(message);
-					String response = in.readLine();
-					if(response.charAt(0)=='Y')
-					{
-						
-					}
-					
-					socket.close();
-				}
-				
-				
-			}catch(Exception e)
-			{
-				
-			}
-		}
-	}
+	
 	public class internet extends Thread{
 		public String ip;
 		public int port;
@@ -202,30 +149,31 @@ public class UserConnect1 extends Activity {
 							}
 							);
 					*/
-					 String y = in.readLine();
-					 out.writeBytes("test\n");
-					 if(y.equals("none"))
-					 {
-					 notify.post(
+					
+					 out.writeBytes("LogIn\n");
+					String response = in.readLine();
+					if(response.equals("OK"))
+					{
+						notify.post(
 								new Runnable()
 								{
 
-									@Override
-									public void run() {
-										// TODO Auto-generated method stub
-										Intent newAct = new Intent();
-							            newAct.setClass(UserConnect1.this, Asgard.class );
-										Bundle bData = new Bundle();
-							            bData.putString("ip", ip);
-							            bData.putString("ID", uid);
-							            // 將 Bundle 指定到 Intent
-							            newAct.putExtras( bData );
-							            // 呼叫新的 Activity Class
-							            startActivity( newAct );
-									}
-									
+								@Override
+								public void run() {
+								// TODO Auto-generated method stub
+								Intent newAct = new Intent();
+								newAct.setClass(UserConnect1.this, Asgard.class );
+								Bundle bData = new Bundle();
+								bData.putString("ip", ip);
+								bData.putString("ID", uid);
+								// 將 Bundle 指定到 Intent
+								newAct.putExtras( bData );
+								// 呼叫新的 Activity Class
+								startActivity( newAct );
+								}
+
 								});
-					 }
+					}
 					 
 				}catch(Exception e)
 				{
