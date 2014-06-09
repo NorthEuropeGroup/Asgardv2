@@ -145,7 +145,7 @@ public class List extends Activity {
 					bData.putInt("card1",card1id);
 					bData.putInt("card2",card2id);
 					bData.putInt("rcard1",rcard1id);
-					bData.putInt("rcard1",rcard2id);
+					bData.putInt("rcard2",rcard2id);
 					// 將 Bundle 指定到 Intent
 					intent.putExtras( bData );
 					
@@ -530,7 +530,7 @@ public class List extends Activity {
 											bData.putInt("card1",card1id);
 											bData.putInt("card2",card2id);
 											bData.putInt("rcard1",rcard1id);
-											bData.putInt("rcard1",rcard2id);
+											bData.putInt("rcard2",rcard2id);
 											// 將 Bundle 指定到 Intent
 											intent.putExtras( bData );
 									        intent.setClass(List.this,Fight.class);
