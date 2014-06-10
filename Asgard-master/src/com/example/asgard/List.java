@@ -38,6 +38,7 @@ public class List extends Activity {
 	int card2id;
 	int rcard1id;
 	int rcard2id;
+	int battleid;
 	int target = 0;
 	String rID;
 	int  isrun= 1;
@@ -146,6 +147,7 @@ public class List extends Activity {
 					bData.putInt("card2",card2id);
 					bData.putInt("rcard1",rcard1id);
 					bData.putInt("rcard2",rcard2id);
+					bData.putInt("bid",battleid);
 					// 將 Bundle 指定到 Intent
 					intent.putExtras( bData );
 					
@@ -205,6 +207,7 @@ public class List extends Activity {
 				out.writeBytes(YN+"\n");
 				out.writeBytes(String.valueOf(card1id)+"\n");
 				out.writeBytes(String.valueOf(card2id)+"\n");
+				
 			}
 			catch( Exception e)
 			{
@@ -268,6 +271,11 @@ public class List extends Activity {
 								}
 							   );
 
+					}
+					else
+					{
+						battleid = Integer.valueOf(res);
+					
 					}
 
 				}catch(Exception e)
@@ -491,6 +499,8 @@ public class List extends Activity {
 							rcard1id = Integer.valueOf(m);
 							 m = in.readLine();
 							 rcard2id = Integer.valueOf(m);
+							 m = in.readLine();
+							 battleid = Integer.valueOf(m);
 							notify.post(
 									new Runnable()
 									{
@@ -531,6 +541,7 @@ public class List extends Activity {
 											bData.putInt("card2",card2id);
 											bData.putInt("rcard1",rcard1id);
 											bData.putInt("rcard2",rcard2id);
+											bData.putInt("bid",battleid);
 											// 將 Bundle 指定到 Intent
 											intent.putExtras( bData );
 									        intent.setClass(List.this,Fight.class);
