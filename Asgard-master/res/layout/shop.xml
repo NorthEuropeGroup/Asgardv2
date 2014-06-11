@@ -9,17 +9,86 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="fill_parent"
+       
        android:layout_weight="182" >
-       <TextView
-           android:id="@+id/atk"
+
+       <LinearLayout
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_alignParentLeft="true"
-           android:layout_alignParentTop="true"
-           android:layout_marginLeft="102dp"
-           android:layout_marginTop="93dp"
-           android:text="shop" />
+           android:orientation="vertical" >
+<LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+              
+               android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                >
+
+               <ImageView
+                   android:id="@+id/imageView1"
+                   android:layout_height="55dp"
+                   android:layout_width="wrap_content"
+                   
+                   android:layout_weight="50"
+                   android:src="@drawable/shop_money_2" />
+
+               <ImageButton
+                   android:id="@+id/sale"
+                   android:layout_width="wrap_content"
+                   android:layout_height="55dp"
+                     android:layout_weight="1"
+                   android:background="#00000000"
+                   android:scaleType="centerInside"
+                   android:src="@drawable/sale_card" />
+
+           </LinearLayout>
+      
+
+           <ImageButton
+               android:id="@+id/shop01"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:background="#00000000"
+               android:paddingTop="10dp"
+               android:scaleType="centerInside"
+               android:src="@drawable/shop_b1" />
+
+           <ImageButton
+               android:id="@+id/shop02"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:background="#00000000"
+               android:scaleType="centerInside"
+               android:src="@drawable/shop_b2" />
+
+           <ImageButton
+               android:id="@+id/shop03"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:background="#00000000"
+               android:scaleType="centerInside"
+               android:src="@drawable/shop_b3" />
+
+  
+
+       </LinearLayout>
+
+       <TextView
+           android:id="@+id/shop_money"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+           android:paddingLeft="80dp"
+           android:paddingTop="30dp"
+           android:text="TextView"
+           android:textColor="@color/yellow"
+           />
+
    </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_weight="618"

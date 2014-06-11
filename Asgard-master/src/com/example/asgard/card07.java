@@ -56,7 +56,7 @@ public class card07 extends Activity{
 			public int agi=Agi();
 
 			public  String[] Character(){
-				String[] arr={"法亞拉","侏儒","暗殺克瓦西爾的侏儒，並用他的血釀成智慧之酒。","靈動","提升敏捷3點"};
+				String[] arr={"法亞拉","侏儒","暗殺克瓦西爾的侏儒，並用他的血釀成智慧之酒。","靈動-死者復甦","完全恢復對有生命值,甚至可以復活!"};
 				return arr; 
 			};
 			public  int level(){
@@ -86,7 +86,9 @@ public class card07 extends Activity{
 			};
 			public skill oneskill() {
 				
-				skill s = new skill(0,100);
+				skill s = new skill(0,0);
+				s.live = 1;
+				s.all = 1;
 				return s;
 				
 			};

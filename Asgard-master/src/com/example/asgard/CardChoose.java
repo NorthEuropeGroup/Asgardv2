@@ -23,6 +23,7 @@ public class CardChoose extends Activity {
 	int card1id=0;
 	int card2id=1;
 	int rr=0;
+	public Info man = new Info("test");
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -94,6 +95,220 @@ public class CardChoose extends Activity {
 					}
 					
 				});
+		FirstCard();
+		SecondCard();
+		
+	}
+	public void FirstCard()
+	{
+		card2id = -1;
+		
+		man = man.LoadFile(man);
+		if(man.card01!=0&&card1id!=0)
+		{
+			card2id = 0;
+			I2.setImageResource(R.drawable.card01_s);
+			return ;
+		}
+		if(man.card02!=0&&card1id!=1)
+		{
+			card2id = 1;
+			I2.setImageResource(R.drawable.card02_s);
+			return ;
+		}
+		if(man.card03!=0&&card1id!=2)
+		{
+			card2id = 2;
+			I2.setImageResource(R.drawable.card03_s);
+			return ;
+		}
+		if(man.card04!=0&&card1id!=3)
+		{
+			card2id = 3;
+			I2.setImageResource(R.drawable.card04_s);
+			return ;
+		}
+		if(man.card05!=0&&card1id!=4)
+		{
+			card2id = 4;
+			I2.setImageResource(R.drawable.card05_s);
+			return ;
+		}
+		if(man.card06!=0&&card1id!=5)
+		{
+			card2id = 5;
+			I2.setImageResource(R.drawable.card06_s);
+			return ;
+		}
+		if(man.card07!=0&&card1id!=6)
+		{
+			card2id = 6;
+			I2.setImageResource(R.drawable.card07_s);
+			return ;
+		}
+		if(man.card08!=0&&card1id!=7)
+		{
+			card2id = 7;
+			I2.setImageResource(R.drawable.card08_s);
+			return ;
+		}
+		if(man.card09!=0&&card1id!=8)
+		{
+			card2id = 8;
+			I2.setImageResource(R.drawable.card09_s);
+			return ;
+		}
+		if(man.card10!=0&&card1id!=9)
+		{
+			card2id = 9;
+			I2.setImageResource(R.drawable.card10_s);
+			return ;
+		}
+		if(man.card11!=0&&card1id!=10)
+		{
+			card2id = 10;
+			I2.setImageResource(R.drawable.card11_s);
+			return ;
+		}
+		if(man.card12!=0&&card1id!=11)
+		{
+			card2id = 11;
+			I2.setImageResource(R.drawable.card12_s);
+			return ;
+		}
+		if(man.card13!=0&&card1id!=12)
+		{
+			card2id = 12;
+			I2.setImageResource(R.drawable.card13_s);
+			return ;
+		}
+		if(man.card14!=0&&card1id!=13)
+		{
+			card2id = 13;
+			I2.setImageResource(R.drawable.card14_s);
+			return ;
+		}
+		if(man.card15!=0&&card1id!=14)
+		{
+			card2id = 14;
+			I2.setImageResource(R.drawable.card15_s);
+			return ;
+		}
+		if(man.card16!=0&&card1id!=15)
+		{
+			card2id = 15;
+			I2.setImageResource(R.drawable.card16_s);
+			return ;
+		}
+		if(man.card17!=0&&card1id!=16)
+		{
+			card2id = 16;
+			I2.setImageResource(R.drawable.card17_s);
+			return ;
+		}
+		if(man.card18!=0&&card1id!=17)
+		{
+			card2id = 17;
+			I2.setImageResource(R.drawable.card18_s);
+			return ;
+		}
+		
+	}
+	public void SecondCard()
+	{
+		card1id = -1;
+		
+		man = man.LoadFile(man);
+		if(man.card01!=0)
+		{
+			card1id = 0;
+			I1.setImageResource(R.drawable.card01_s);
+		}
+		if(man.card02!=0)
+		{
+			card1id = 1;
+			I1.setImageResource(R.drawable.card02_s);
+		}
+		if(man.card03!=0)
+		{
+			card1id = 2;
+			I1.setImageResource(R.drawable.card03_s);
+		}
+		if(man.card04!=0)
+		{
+			card1id = 3;
+			I1.setImageResource(R.drawable.card04_s);
+		}
+		if(man.card05!=0)
+		{
+			card1id = 4;
+			I1.setImageResource(R.drawable.card05_s);
+		}
+		if(man.card06!=0)
+		{
+			card1id = 5;
+			I1.setImageResource(R.drawable.card06_s);
+		}
+		if(man.card07!=0)
+		{
+			card1id = 6;
+			I1.setImageResource(R.drawable.card07_s);
+		}
+		if(man.card08!=0)
+		{
+			card1id = 7;
+			I1.setImageResource(R.drawable.card08_s);
+		}
+		if(man.card09!=0)
+		{
+			card1id = 8;
+			I1.setImageResource(R.drawable.card09_s);
+		}
+		if(man.card10!=0)
+		{
+			card1id = 9;
+			I1.setImageResource(R.drawable.card10_s);
+		}
+		if(man.card11!=0)
+		{
+			card1id = 10;
+			I1.setImageResource(R.drawable.card11_s);
+		}
+		if(man.card12!=0)
+		{
+			card1id = 11;
+			I1.setImageResource(R.drawable.card12_s);
+		}
+		if(man.card13!=0)
+		{
+			card1id = 12;
+			I1.setImageResource(R.drawable.card13_s);
+		}
+		if(man.card14!=0)
+		{
+			card1id = 13;
+			I1.setImageResource(R.drawable.card14_s);
+		}
+		if(man.card15!=0)
+		{
+			card1id = 14;
+			I1.setImageResource(R.drawable.card15_s);
+		}
+		if(man.card16!=0)
+		{
+			card1id = 15;
+			I1.setImageResource(R.drawable.card16_s);
+		}
+		if(man.card17!=0)
+		{
+			card1id = 16;
+			I1.setImageResource(R.drawable.card17_s);
+		}
+		if(man.card18!=0)
+		{
+			card1id = 17;
+			I1.setImageResource(R.drawable.card18_s);
+		}
 	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -133,47 +348,47 @@ public class CardChoose extends Activity {
 			}
 			if(id==7)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card08_s);
 			}
 			if(id==8)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card09_s);
 			}
 			if(id==9)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card10_s);
 			}
 			if(id==10)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card11_s);
 			}
 			if(id==11)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card12_s);
 			}
 			if(id==12)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card13_s);
 			}
 			if(id==13)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card14_s);
 			}
 			if(id==14)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card15_s);
 			}
 			if(id==15)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card16_s);
 			}
 			if(id==16)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card17_s);
 			}
 			if(id==17)
 			{
-				I1.setImageResource(R.drawable.card01_s);
+				I1.setImageResource(R.drawable.card18_s);
 			}
 			break;
 		case 1:
@@ -208,47 +423,47 @@ public class CardChoose extends Activity {
 			}
 			if(id==7)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card08_s);
 			}
 			if(id==8)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card09_s);
 			}
 			if(id==9)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card10_s);
 			}
 			if(id==10)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card11_s);
 			}
 			if(id==11)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card12_s);
 			}
 			if(id==12)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card13_s);
 			}
 			if(id==13)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card14_s);
 			}
 			if(id==14)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card15_s);
 			}
 			if(id==15)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card16_s);
 			}
 			if(id==16)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card17_s);
 			}
 			if(id==17)
 			{
-				I2.setImageResource(R.drawable.card01_s);
+				I2.setImageResource(R.drawable.card18_s);
 			}
 			break;
 		}

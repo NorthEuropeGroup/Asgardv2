@@ -56,7 +56,7 @@ public class card15 extends Activity{
 			public int agi=Agi();
 
 			public  String[] Character(){
-				String[] arr={"艾格瑟","巨人的守護者","頭上有一隻紅公雞，當諸神的黃昏降臨時就會啼叫。平常在森林彈奏豎琴。","不諧和音","反彈對手攻擊，並造成對手傷害300"};
+				String[] arr={"艾格瑟","巨人的守護者","頭上有一隻紅公雞，當諸神的黃昏降臨時就會啼叫。平常在森林彈奏豎琴。","不諧和音","不被對手攻擊，造成對手傷害300"};
 				return arr; 
 			};
 			public  int level(){
@@ -87,7 +87,7 @@ public class card15 extends Activity{
 			public skill oneskill() {
 				
 				skill s = new skill(0,300);
-				s.ref = 1;
+				s.natk = 1;
 				return s;
 				
 			};

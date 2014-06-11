@@ -10,6 +10,7 @@ import java.net.Socket;
 
 
 
+
 import com.example.asgard.List.BATTLERES;
 
 import android.app.Activity;
@@ -75,6 +76,10 @@ public class Fight extends Activity {
 	int r2def;
 	int s1pt;
 	int s2pt;
+	int m1n;
+	int m2n;
+	int r1n;
+	int r2n;
 	AlertDialog alertDialog;
 	Handler notify = new Handler();
 	@Override
@@ -105,6 +110,10 @@ public class Fight extends Activity {
 			r2def = 0;
 			s1pt = 1;
 			s2pt = 1;
+			m1n = 0;
+			m2n = 0;
+			r1n = 0;
+			r2n = 0;
 			tmp = "";
 			IsUrTurn = 0;
 			isrun = 1;
@@ -136,6 +145,33 @@ public class Fight extends Activity {
 			BATTLEQ Q = new BATTLEQ(ip,ID,battleid);
 			Q.start();
 		};
+	public void Win()
+	{
+		isrun = 0;
+
+		Intent intent = new Intent();
+		Bundle bData = new Bundle();
+		bData.putString("ip", ip);
+		bData.putString("ID", ID);
+		// 將 Bundle 指定到 Intent
+		intent.putExtras( bData );
+		intent.setClass(Fight.this,Win.class);
+		startActivity(intent);
+		finish();  
+	}
+	public void Lose()
+	{
+		isrun = 0;
+		Intent intent = new Intent();
+		Bundle bData = new Bundle();
+		bData.putString("ip", ip);
+		bData.putString("ID", ID);
+		// 將 Bundle 指定到 Intent
+		intent.putExtras( bData );
+		intent.setClass(Fight.this,Lose.class);
+		startActivity(intent);
+		finish();  
+	}
 	public void CreateView()
 	{
 		Time = (TextView)findViewById(R.id.Time);
@@ -229,6 +265,7 @@ public class Fight extends Activity {
 				{
 					BATTLESKI a = new BATTLESKI(ip,ID,battleid,0,twho);
 					a.start();
+
 					SKIView(twho,0);
 				}
 				}
@@ -243,6 +280,7 @@ public class Fight extends Activity {
 	}
 	public void SKIView(int c1,int c2)
 	{
+		IsUrTurn = 0;
 		int damage;
 		skill a;
 		int tl;
@@ -262,7 +300,7 @@ public class Fight extends Activity {
 			{
 				if(a.abs==0)
 				{
-					damage = a.hpvalue-r1def*r1.DEF();
+					damage = a.hpvalue-r1def*r1.DEF()-r1n*100000;
 					if(damage<0)
 						damage = 0;
 					r1hp-=damage;
@@ -270,7 +308,7 @@ public class Fight extends Activity {
 						r1hp = 0;
 					tl = r1hp*100/r1.HP();
 					rBl1.setProgress(tl);
-					damage = a.hpvalue-r2def*r2.DEF();
+					damage = a.hpvalue-r2def*r2.DEF()-r2n*100000;
 					if(damage<0)
 						damage = 0;
 					r2hp-=damage;
@@ -278,17 +316,21 @@ public class Fight extends Activity {
 						r2hp = 0;
 					tl = r2hp*100/r2.HP();
 					rBl2.setProgress(tl);
-					
+
 				}
 				else
 				{
-					damage = a.hpvalue;
+					damage = a.hpvalue-r1n*100000;
+					if(damage<0)
+						damage = 0;
 					r1hp-=damage;
 					if(r1hp<0)
 						r1hp = 0;
 					tl = r1hp*100/r1.HP();
 					rBl1.setProgress(tl);
-					damage = a.hpvalue;
+					damage = a.hpvalue-r2n*100000;
+					if(damage<0)
+						damage = 0;
 					r2hp-=damage;
 					if(r2hp<0)
 						r2hp = 0;
@@ -298,13 +340,17 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				damage = a.hpvalue*100/r1.HP();
+				damage = (a.hpvalue*r1.HP())/100-r1n*100000;
+				if(damage<0)
+					damage=0;
 				r1hp-=damage;
 				if(r1hp<0)
 					r1hp = 0;
 				tl = r1hp*100/r1.HP();
 				rBl1.setProgress(tl);
-				damage = a.hpvalue*100/r2.HP();
+				damage = (a.hpvalue*r2.HP())/100-r2n*100000;
+				if(damage<0)
+					damage=0;
 				r2hp-=damage;
 				if(r2hp<0)
 					r2hp = 0;
@@ -320,7 +366,7 @@ public class Fight extends Activity {
 				{
 					if(a.abs==0)
 					{
-						damage = a.hpvalue-r1def*r1.DEF();
+						damage = a.hpvalue-r1def*r1.DEF()-r1n*100000;
 						if(damage<0)
 							damage = 0;
 						r1hp-=damage;
@@ -331,7 +377,9 @@ public class Fight extends Activity {
 					}
 					else
 					{
-						damage = a.hpvalue;
+						damage = a.hpvalue-r1n*100000;
+						if(damage<0)
+							damage = 0;
 						r1hp-=damage;
 						if(r1hp<0)
 							r1hp = 0;
@@ -341,7 +389,9 @@ public class Fight extends Activity {
 				}
 				else
 				{
-					damage = a.hpvalue*100/r1.HP();
+					damage = (a.hpvalue*r1.HP())/100-r1n*100000;
+					if(damage<0)
+						damage = 0;
 					r1hp-=damage;
 					if(r1hp<0)
 						r1hp = 0;
@@ -355,7 +405,7 @@ public class Fight extends Activity {
 				{
 					if(a.abs==0)
 					{
-						damage = a.hpvalue-r2def*r2.DEF();
+						damage = a.hpvalue-r2def*r2.DEF()-r2n*100000;
 						if(damage<0)
 							damage = 0;
 						r2hp-=damage;
@@ -366,7 +416,9 @@ public class Fight extends Activity {
 					}
 					else
 					{
-						damage = a.hpvalue;
+						damage = a.hpvalue-r2n*100000;
+						if(damage<0)
+							damage = 0;
 						r2hp-=damage;
 						if(r2hp<0)
 							r2hp = 0;
@@ -376,7 +428,9 @@ public class Fight extends Activity {
 				}
 				else
 				{
-					damage = a.hpvalue*100/r2.HP();
+					damage = (a.hpvalue*r2.HP())/100-r2n*100000;
+					if(damage<0)
+						damage = 0;
 					r2hp-=damage;
 					if(r2hp<0)
 						r2hp = 0;
@@ -385,6 +439,32 @@ public class Fight extends Activity {
 				}
 			}
 		}
+		if(a.live==1)
+		{
+			if(c1==0)
+			{
+				m2hp = m2.HP();
+				Bl2.setProgress(100);
+			}
+			else if(c1==1)
+			{
+				m1hp = m1.HP();
+				Bl1.setProgress(100);
+			}
+		}
+		if(a.natk==1)
+		{
+			if(c1==0)
+			{
+				m1n = 1;
+			}
+			else
+			{
+				m2n = 1;
+			}
+		}
+		if(r1hp==0&&r2hp==0)
+			Win();
 	}
 	//c1:my card num , c2:rival card num
 	public void BeSKIView(int c1,int c2)
@@ -395,7 +475,7 @@ public class Fight extends Activity {
 		if(c2==0)
 		{
 			a = r1.Skill;
-			
+
 		}
 		else
 		{
@@ -407,7 +487,7 @@ public class Fight extends Activity {
 			{
 				if(a.abs==0)
 				{
-					damage = a.hpvalue-m1def*m1.DEF();
+					damage = a.hpvalue-m1def*m1.DEF()-m1n*100000;
 					if(damage<0)
 						damage = 0;
 					m1hp-=damage;
@@ -415,7 +495,7 @@ public class Fight extends Activity {
 						m1hp = 0;
 					tl = m1hp*100/m1.HP();
 					Bl1.setProgress(tl);
-					damage = a.hpvalue-m2def*m2.DEF();
+					damage = a.hpvalue-m2def*m2.DEF()-m2n*100000;
 					if(damage<0)
 						damage = 0;
 					m2hp-=damage;
@@ -426,13 +506,17 @@ public class Fight extends Activity {
 				}
 				else
 				{
-					damage = a.hpvalue;
+					damage = a.hpvalue-m1n*100000;
+					if(damage<0)
+						damage = 0;
 					m1hp-=damage;
 					if(m1hp<0)
 						m1hp = 0;
 					tl = m1hp*100/m1.HP();
 					Bl1.setProgress(tl);
-					damage = a.hpvalue;
+					damage = a.hpvalue-m2n*100000;
+					if(damage<0)
+						damage = 0;
 					m2hp-=damage;
 					if(m2hp<0)
 						m2hp = 0;
@@ -442,13 +526,17 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				damage = a.hpvalue*100/m1.HP();
+				damage = (a.hpvalue*m1.HP())/100-m1n*100000;
+				if(damage<0)
+					damage = 0;
 				m1hp-=damage;
 				if(m1hp<0)
 					m1hp = 0;
 				tl = m1hp*100/m1.HP();
 				Bl1.setProgress(tl);
-				damage = a.hpvalue*100/m2.HP();
+				damage = (a.hpvalue*m2.HP())/100-m2n*100000;
+				if(damage<0)
+					damage = 0;
 				m2hp-=damage;
 				if(m2hp<0)
 					m2hp = 0;
@@ -464,7 +552,7 @@ public class Fight extends Activity {
 				{
 					if(a.abs==0)
 					{
-						damage = a.hpvalue-m1def*m1.DEF();
+						damage = a.hpvalue-m1def*m1.DEF()-m1n*100000;
 						if(damage<0)
 							damage = 0;
 						m1hp-=damage;
@@ -475,7 +563,9 @@ public class Fight extends Activity {
 					}
 					else
 					{
-						damage = a.hpvalue;
+						damage = a.hpvalue-m1n*100000;
+						if(damage<0)
+							damage = 0;
 						m1hp-=damage;
 						if(m1hp<0)
 							m1hp = 0;
@@ -485,7 +575,9 @@ public class Fight extends Activity {
 				}
 				else
 				{
-					damage = a.hpvalue*100/m1.HP();
+					damage = (a.hpvalue*m1.HP())/100-m1n*100000;
+					if(damage<0)
+						damage = 0;
 					m1hp-=damage;
 					if(m1hp<0)
 						m1hp = 0;
@@ -499,7 +591,7 @@ public class Fight extends Activity {
 				{
 					if(a.abs==0)
 					{
-						damage = a.hpvalue-m2def*m2.DEF();
+						damage = a.hpvalue-m2def*m2.DEF()-m2n*100000;
 						if(damage<0)
 							damage = 0;
 						m2hp-=damage;
@@ -510,7 +602,9 @@ public class Fight extends Activity {
 					}
 					else
 					{
-						damage = a.hpvalue;
+						damage = a.hpvalue-m2n*100000;
+						if(damage<0)
+							damage = 0;
 						m2hp-=damage;
 						if(m2hp<0)
 							m2hp = 0;
@@ -520,7 +614,9 @@ public class Fight extends Activity {
 				}
 				else
 				{
-					damage = a.hpvalue*100/m2.HP();
+					damage = (a.hpvalue*m2.HP())/100-m2n*100000;
+					if(damage<0)
+						damage = 0;
 					m2hp-=damage;
 					if(m2hp<0)
 						m2hp = 0;
@@ -529,15 +625,42 @@ public class Fight extends Activity {
 				}
 			}
 		}
+		if(a.live==1)
+		{
+			if(c2==0)
+			{
+				r2hp = r2.HP();
+				rBl2.setProgress(100);
+			}
+			else if(c2==1)
+			{
+				r1hp = r1.HP();
+				rBl1.setProgress(100);
+			}
+		}
+		if(a.natk==1)
+		{
+			if(c2==0)
+			{
+				r1n = 1;
+			}
+			else if(c2==1)
+			{
+				r2n = 1;
+			}
+		}
+		if(m1hp==0&&m2hp==0)
+			Lose();
 	}
 	public void ATKView(int c1,int c2)
 	{
+		IsUrTurn = 0;
 		int damage = 0;
 		if(c1==0)
 		{
 			if(c2==0)
 			{
-				damage = m1.ATK()-r1def*r1.DEF();
+				damage = m1.ATK()-r1def*r1.DEF()-r1n*100000;
 				if(damage<0)
 					damage = 0;
 				r1hp-=damage;
@@ -545,10 +668,11 @@ public class Fight extends Activity {
 					r1hp = 0;
 				int tl = r1hp*100/r1.HP();
 				rBl1.setProgress(tl);
+
 			}
 			else
 			{
-				damage = m1.ATK()-r2def*r2.DEF();
+				damage = m1.ATK()-r2def*r2.DEF()-r2n*100000;
 				if(damage<0)
 					damage = 0;
 				r2hp-=damage;
@@ -562,7 +686,7 @@ public class Fight extends Activity {
 		{
 			if(c2==0)
 			{
-				damage = m2.ATK()-r1def*r1.DEF();
+				damage = m2.ATK()-r1def*r1.DEF()-r1n*100000;
 				if(damage<0)
 					damage = 0;
 				r1hp-=damage;
@@ -574,7 +698,7 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				damage = m2.ATK()-r2def*r2.DEF();
+				damage = m2.ATK()-r2def*r2.DEF()-r2n*100000;
 				if(damage<0)
 					damage = 0;
 				r2hp-=damage;
@@ -585,6 +709,8 @@ public class Fight extends Activity {
 				rBl2.setProgress(tl);
 			}
 		}
+		if(r1hp==0&&r2hp==0)
+			Win();
 	}
 	//c1:my card num , c2:rival card num
 	public void BeATKView(int c1,int c2)
@@ -594,7 +720,7 @@ public class Fight extends Activity {
 		{
 			if(c2==0)
 			{
-				damage = r1.ATK()-m1def*m1.DEF();
+				damage = r1.ATK()-m1def*m1.DEF()-m1n*100000;
 				if(damage<0)
 					damage = 0;
 				m1hp-=damage;
@@ -605,7 +731,7 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				damage = r2.ATK()-m1def*m1.DEF();
+				damage = r2.ATK()-m1def*m1.DEF()-m1n*100000;
 				if(damage<0)
 					damage = 0;
 				m1hp-=damage;
@@ -620,7 +746,7 @@ public class Fight extends Activity {
 		{
 			if(c2==0)
 			{
-				damage = r1.ATK()-m2def*m2.DEF();
+				damage = r1.ATK()-m2def*m2.DEF()-m2n*100000;
 				if(damage<0)
 					damage = 0;
 				m2hp-=damage;
@@ -631,7 +757,7 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				damage = r2.ATK()-m2def*m2.DEF();
+				damage = r2.ATK()-m2def*m2.DEF()-m2n*100000;
 				if(damage<0)
 					damage = 0;
 				m2hp-=damage;
@@ -641,6 +767,8 @@ public class Fight extends Activity {
 				Bl2.setProgress(tl);
 			}
 		}
+		if(m1hp==0&&m2hp==0)
+			Lose();
 	}
 	public void EnableChoose(int cmd)
 	{
@@ -831,6 +959,7 @@ public class Fight extends Activity {
 					m1def = 1;
 					BATTLEDEF a = new BATTLEDEF(ip,ID,battleid,0);
 					a.start();
+
 					// TODO Auto-generated method stub
 					A1.setVisibility(View.INVISIBLE);
 					D1.setVisibility(View.INVISIBLE);
@@ -892,6 +1021,7 @@ public class Fight extends Activity {
 					@Override
 					public void onClick(View v) {
 					m2def = 1;
+
 					BATTLEDEF a = new BATTLEDEF(ip,ID,battleid,1);
 					a.start();
 					// TODO Auto-generated method stub
@@ -912,7 +1042,7 @@ public class Fight extends Activity {
 					public void onClick(View v) {
 					// TODO Auto-generated method stub
 
-					
+
 					if(s2pt>0)
 					{
 					alertDialog  = SkillAlert(1,m2.skill_intro);
@@ -927,6 +1057,57 @@ public class Fight extends Activity {
 
 					});
 		}
+	}
+	public class TIMEOUT extends Thread
+	{
+		String ip;
+		String uID;
+		int port;
+		int BID;
+		public TIMEOUT(String tip,String tID,int tBID)
+		{
+			port = 5000;
+			ip = tip;
+			uID = tID;
+			BID = tBID;
+		}
+		@Override
+			public void run()
+			{
+				Socket socket = null;
+				try {
+					IsUrTurn = 0;
+					// 宣告輸出至Server的Stream
+					DataOutputStream out ;//=new DataOutputStream(socket.getOutputStream());; 
+					// 宣告讀取自Server的物件
+					BufferedReader in;//= new BufferedReader(new InputStreamReader(socket.getInputStream()));;
+
+
+
+
+
+					socket = new Socket(ip,5000);
+					out =new DataOutputStream(socket.getOutputStream());
+					in= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+					String message = uID;
+					out.writeBytes(message+"\n");
+					out.writeBytes("TIMEOUT\n");
+					out.writeBytes(String.valueOf(battleid)+"\n");
+					notify.post(new Runnable()
+							{
+							public void run()
+							{
+							Lose();
+							}
+							});
+
+
+				}
+				catch(Exception e)
+				{
+
+				}
+			}
 	}
 	public class BATTLEDEF extends Thread
 	{
@@ -948,7 +1129,7 @@ public class Fight extends Activity {
 			{
 				Socket socket = null;
 				try {
-
+					IsUrTurn = 0;
 					// 宣告輸出至Server的Stream
 					DataOutputStream out ;//=new DataOutputStream(socket.getOutputStream());; 
 					// 宣告讀取自Server的物件
@@ -1131,6 +1312,7 @@ public class Fight extends Activity {
 							if(ns==0)
 							{
 								m1def = 0;
+								m1n = 0;
 								if(m1hp!=0)
 								{
 									out.writeBytes("OK\n");
@@ -1141,9 +1323,14 @@ public class Fight extends Activity {
 											public void run() {
 											// TODO Auto-generated method stub
 											Enable(0);
+
 											}
 
 											});
+									utimer = new Timer1();
+									IsUrTurn = 1;
+									sparetime = 30;
+									utimer.start();
 
 
 								}
@@ -1155,6 +1342,7 @@ public class Fight extends Activity {
 							else
 							{
 								m2def = 0;
+								m2n = 0;
 								if(m2hp!=0)
 								{
 									out.writeBytes("OK\n");
@@ -1168,6 +1356,10 @@ public class Fight extends Activity {
 											}
 
 											});
+									utimer = new Timer1();
+									IsUrTurn = 1;
+									sparetime = 30;
+									utimer.start();
 
 								}
 								else
@@ -1185,9 +1377,15 @@ public class Fight extends Activity {
 							atker = atk;
 							beatker = ta;
 							if(atker==0)
+							{
 								r1def = 0;
+								r1n = 0;
+							}
 							else if(atker==1)
+							{
 								r2def = 0;
+								r2n = 0;
+							}
 							notify.post(
 									new Runnable()
 									{
@@ -1210,9 +1408,15 @@ public class Fight extends Activity {
 							atker = atk;
 							beatker = ta;
 							if(atker==0)
+							{
 								r1def = 0;
+								r1n = 0;
+							}
 							else if(atker==1)
+							{
 								r2def = 0;
+								r2n = 0;
+							}
 							notify.post(
 									new Runnable()
 									{
@@ -1225,16 +1429,38 @@ public class Fight extends Activity {
 
 									}
 								   );
-							
+
 						}
 						else if(buf.equals("BATTLEDEF"))
 						{
 							String sn = in.readLine();
 							int ns = Integer.valueOf(sn);
 							if(ns==0)
-								r1def = 1;
+							{
+								r1def = 0;
+								r1n = 0;
+							}
 							else if(ns==1)
-								r2def = 1;
+							{
+								r2def = 0;
+								r2n = 0;
+							}
+						}
+						else if(buf.equals("TIMEOUT"))
+						{
+							notify.post(
+									new Runnable()
+									{
+
+									@Override
+									public void run() {
+									// TODO Auto-generated method stub
+									Win();
+									}
+
+									}
+								   );
+
 						}
 						socket.close();
 					}
@@ -1318,5 +1544,52 @@ public class Fight extends Activity {
 			}
 
 	};
+	public Handler handler = new Handler();
+	int sparetime;
+	Timer1 utimer;
+
+	public class Timer1 extends Thread
+	{
+		public void run()
+		{
+			while(IsUrTurn==1&&sparetime>=0)
+			{
+				handler.post(new Runnable()
+						{
+						public void run()
+						{
+						Time.setText(String.valueOf(sparetime));
+						}
+						});
+				sparetime--;
+				try{
+					Timer1.sleep(1000);
+				}
+				catch(Exception e)
+				{
+
+				}
+			}
+			if(IsUrTurn==0)
+			{
+				handler.post(new Runnable()
+						{
+						public void run()
+						{
+						Time.setText("Wait");
+						}
+						});
+			}
+			else if(isrun==1)
+			{
+				TIMEOUT a = new TIMEOUT(ip,ID,battleid);
+				a.start();
+
+			}
+		}
+	}
 }
+
+
+
 

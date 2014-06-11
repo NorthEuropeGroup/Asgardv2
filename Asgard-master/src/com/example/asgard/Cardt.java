@@ -6,13 +6,17 @@ package com.example.asgard;
 
 
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +25,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -35,6 +40,7 @@ public class Cardt extends Activity {
 	 private ImageButton button_card;
 	 private ImageButton button_shop;
 	 private ImageButton button_home;
+	 private Info man=new Info("hi");
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,7 +90,11 @@ public class Cardt extends Activity {
 	       public void onClick(View arg0) {
 	           // TODO Auto-generated method stub
 	           Intent intent = new Intent();
-	           intent.setClass(Cardt.this,Fight.class);
+	           man = man.LoadFile(man);
+	           Bundle BData  = new Bundle();
+	           BData.putString("ID", man.ID);
+	           intent.putExtras(BData);
+	           intent.setClass(Cardt.this,UserConnect1.class);
 	           startActivity(intent);
 	           finish();
 	       }
@@ -167,54 +177,67 @@ public class Cardt extends Activity {
 
 	public static class ViewGroupExampleAdapter extends FancyCoverFlowAdapter {
 
-        // =============================================================================
-        // Private members
-        // =============================================================================
+		 private Info man=new Info("貝斯特拉");
+		 
+	        // =============================================================================
+	        // Private members
+	        // =============================================================================
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			ArrayList<Integer> list2 = new ArrayList<Integer>();
+			int a[]=new int[man.Cardcount(man)];
+				
+	    
+	        // =============================================================================
+	        // Supertype overrides
+	        // =============================================================================
+	       
+	        
 
-        public int[] images = {R.drawable.card01_s,R.drawable.card02_s,R.drawable.card03_s,R.drawable.card04_s,R.drawable.card05_s,
-        		R.drawable.card06_s,R.drawable.card07_s,R.drawable.card08,R.drawable.card09,R.drawable.card10,
-        		R.drawable.card11,R.drawable.card12,R.drawable.card13,R.drawable.card14,R.drawable.card15,
-        		R.drawable.card16,R.drawable.card17,R.drawable.card18,};
 
-        // =============================================================================
-        // Supertype overrides
-        // =============================================================================
+	        @Override
+	        public View getCoverFlowItem(int i, View reuseableView, ViewGroup viewGroup) {
+	            CustomViewGroup customViewGroup = null;
+	            
+		          
+		          list =man.getSmallImage(man);
+		          list2 =man.getCardID(man);
+		          a=man.ArraylistToInt(a,list);
+	          
+	            if (reuseableView != null) {
+	                customViewGroup = (CustomViewGroup) reuseableView;
+	            } else {
+	                customViewGroup = new CustomViewGroup(viewGroup.getContext(),i,man,list2);
+	                customViewGroup.setLayoutParams(new FancyCoverFlow.LayoutParams(300, 600));
+	            }
 
-        @Override
-        public int getCount() {
-            return images.length;
-        }
+	            customViewGroup.getImageView().setImageResource(this.getItem(i));
+	            
+	            
+	            return customViewGroup;
+	        
+	        }
+	        
 
-        @Override
-        public Integer getItem(int i) {
-            return images[i];
-        }
+	        
+	        @Override
+	        public int getCount() {
+	            return a.length;
+	        }
+	        
 
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
+	        @Override
+	        public Integer getItem(int i) {
+	            return a[i];
+	        }
 
-        @Override
-        public View getCoverFlowItem(int i, View reuseableView, ViewGroup viewGroup) {
-            CustomViewGroup customViewGroup = null;
-
-            if (reuseableView != null) {
-                customViewGroup = (CustomViewGroup) reuseableView;
-            } else {
-                customViewGroup = new CustomViewGroup(viewGroup.getContext(),i);
-                customViewGroup.setLayoutParams(new FancyCoverFlow.LayoutParams(300, 600));
-            }
-
-            customViewGroup.getImageView().setImageResource(this.getItem(i));
-            
-            
-            return customViewGroup;
-        }
+	        @Override
+	        public long getItemId(int i) {
+	            return i;
+	        }
     }
 	public static class CustomViewGroup extends LinearLayout {
 
-        // =============================================================================
+		// =============================================================================
         // Child views
         // =============================================================================
 
@@ -228,73 +251,95 @@ public class Cardt extends Activity {
         // Constructor
         // =============================================================================
         int tar=0;
-        public  CustomViewGroup(Context context,int ar) {
+        public int[] convertIntegers(ArrayList<Integer> integers)
+        {
+            int[] ret = new int[integers.size()];
+            for (int i=0; i < ret.length; i++)
+            {
+                ret[i] = integers.get(i).intValue();
+            }
+            return ret;
+        }
+        public  CustomViewGroup(Context context,int ar,Info man,ArrayList<Integer> list) {
             super(context);
 
             this.setOrientation(VERTICAL);
+            
+            final int[] but=convertIntegers(list);
             tar=ar;
+            
             this.textView = new TextView(context);
             this.imageView = new ImageView(context);
             this.button = new Button(context);
 
+            DisplayMetrics displaymetrics = new DisplayMetrics();
+            WindowManager windowManager = (WindowManager) context
+                    .getSystemService(Context.WINDOW_SERVICE);
+    windowManager.getDefaultDisplay().getMetrics(displaymetrics);
+   
             LinearLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             this.textView.setLayoutParams(layoutParams);
             this.imageView.setLayoutParams(layoutParams);
             this.button.setLayoutParams(layoutParams);
-
+            int s=cardtoInt(man,but[tar]);
+            	
+            	
+            this.textView.setText("卡片數量："+s+"張");
             this.textView.setGravity(Gravity.CENTER);
 
             this.imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             this.imageView.setAdjustViewBounds(true);
 
-            this.button.setText("Details");
+            this.button.setText("卡片內容");
+            this.button.setTextColor(Color.rgb(255, 210, 30));
+            this.button.setBackgroundResource(R.drawable.card_button);
+           
             this.button.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                 	Intent intent =new Intent();
-                		if(tar==0)
-                		intent.setClass( view.getContext(), card01.class);
-                		
-                		if(tar==1)
+                		if(but[tar]==1)
+                		intent.setClass( view.getContext(), card01.class);                		
+                		if(but[tar]==2)
                 		intent.setClass( view.getContext(), card02.class);
-                		if(tar==2)
+                		if(but[tar]==3)
                 		intent.setClass( view.getContext(), card03.class);
-                		if(tar==3)
+                		if(but[tar]==4)
                 		intent.setClass( view.getContext(), card04.class);
-                		if(tar==4)
+                		if(but[tar]==5)
                 		intent.setClass( view.getContext(), card05.class);
-                		if(tar==5)
+                		if(but[tar]==6)
                 		intent.setClass( view.getContext(), card06.class);
-                		if(tar==6)
+                		if(but[tar]==7)
                 		intent.setClass( view.getContext(), card07.class);
-                		if(tar==7)
+                		if(but[tar]==8)
                 		intent.setClass( view.getContext(), card08.class);
-                		if(tar==8)
+                		if(but[tar]==9)
                 		intent.setClass( view.getContext(), card09.class);
-                		if(tar==9)
+                		if(but[tar]==10)
                 		intent.setClass( view.getContext(), card10.class);
-                		if(tar==10)
+                		if(but[tar]==11)
                 		intent.setClass( view.getContext(), card11.class);
-                		if(tar==11)
+                		if(but[tar]==12)
                 		intent.setClass( view.getContext(), card12.class);
-                		if(tar==12)
+                		if(but[tar]==13)
                 		intent.setClass( view.getContext(), card13.class);
-                		if(tar==13)
+                		if(but[tar]==14)
                 		intent.setClass( view.getContext(), card14.class);
-                		if(tar==14)
+                		if(but[tar]==15)
                 		intent.setClass( view.getContext(), card15.class);
-                		if(tar==15)
+                		if(but[tar]==16)
                 		intent.setClass( view.getContext(), card16.class);
-                		if(tar==16)
+                		if(but[tar]==17)
                 		intent.setClass( view.getContext(), card17.class);
-                		if(tar==17)
+                		if(but[tar]==18)
                 		intent.setClass( view.getContext(), card18.class);
                 		
                 		 view.getContext().startActivity(intent); 
                 }
             });
 
-            //this.addView(this.textView);
+            this.addView(this.textView);
             this.addView(this.imageView);
             this.addView(this.button);
         }
@@ -304,6 +349,31 @@ public class Cardt extends Activity {
 
         private ImageView getImageView() {
             return imageView;
+        }
+        private int cardtoInt(Info man,int i){
+        	int[] ar=new int[18];
+        	ar[0]=man.card01;
+        	ar[1]=man.card02;
+        	ar[2]=man.card03;
+        	ar[3]=man.card04;
+        	ar[4]=man.card05;
+        	ar[5]=man.card06;
+        	ar[6]=man.card07;
+        	ar[7]=man.card08;
+        	ar[8]=man.card09;
+        	ar[9]=man.card10;
+        	ar[10]=man.card11;
+        	ar[11]=man.card12;
+        	ar[12]=man.card13;
+        	ar[13]=man.card14;
+        	ar[14]=man.card15;
+        	ar[15]=man.card16;
+        	ar[16]=man.card17;
+        	ar[17]=man.card18;
+
+
+        	return ar[i-1];
+        	
         }
 	}
 	

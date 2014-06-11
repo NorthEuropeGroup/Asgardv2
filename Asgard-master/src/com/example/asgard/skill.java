@@ -8,6 +8,7 @@ public  class skill {
 	public int natk;
 	int all;
 	int ref;
+	int live;
 	public skill(int ttype,int n)
 	{
 		type = ttype;
@@ -17,5 +18,6 @@ public  class skill {
 		natk = 0;
 		all = 0;
 		ref = 0;
+		live = 0;
 	}
 }

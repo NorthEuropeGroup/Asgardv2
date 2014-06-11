@@ -32,20 +32,21 @@ import android.widget.TextView;
 
 public class UserConnect1 extends Activity {
 	EditText Eip;
-	EditText Euid;
+
 	Button button_connect;
 	TextView tt;
 	Handler notify = new Handler();
 	SimpleAdapter adapter;
-	
+	String ID;
 	ArrayList<HashMap<String,Object>> Ulist = new ArrayList<HashMap<String,Object>>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_connect1);
-		
+		Bundle bData = this.getIntent().getExtras();
+		ID = bData.getString("ID");
 		Eip = (EditText)findViewById(R.id.eip);
-		Euid = (EditText)findViewById(R.id.euid);
+		
 		button_connect = (Button)findViewById(R.id.Go);
 		tt = (TextView)findViewById(R.id.textView1);
 		button_connect.setOnClickListener(
@@ -56,13 +57,13 @@ public class UserConnect1 extends Activity {
 				public void onClick(View v) {
 				// TODO Auto-generated method stub
 					String iip = Eip.getText().toString();
-					String iuid = Euid.getText().toString();
+					
 					//ClientReq co = new ClientReq(iip,5000,iuid);
 					
 					//co.start();
 					//Change View
 					// 建立 Bundle 物件
-		            internet co = new internet(iip,5000,iuid);
+		            internet co = new internet(iip,5000,ID);
 		            co.start();
 		            
 					
@@ -118,37 +119,6 @@ public class UserConnect1 extends Activity {
 					 out.writeBytes(uid+"\n");
 					
 					
-					/*notify.post(
-							new Runnable()
-							{
-
-								@Override
-								public void run() {
-									// TODO Auto-generated method stub
-									setContentView(R.layout.activity_list);
-									Ulist = new  ArrayList<HashMap<String,Object>>();
-									for(int i=0; i<userList1.size(); i++){
-										 HashMap<String,Object> item = new HashMap<String,Object>();
-										 item.put("ID", userList1.get(i).getID());
-										 if(userList1.get(i).getBattleStatus())
-											 item.put("inbattle", "In battle");
-										 else
-											 item.put("inbattle", "Not in battle");
-										 
-										 Ulist.add( item );
-										 }
-									adapter = new SimpleAdapter( 
-											 UserConnect1.this, 
-											 Ulist,
-											 R.layout.list_item,
-											 new String[]{"ID","inbattle"},
-											 new int []{R.id.ID,R.id.inbattle});
-									
-								}
-								
-							}
-							);
-					*/
 					
 					 out.writeBytes("LogIn\n");
 					String response = in.readLine();
@@ -162,7 +132,7 @@ public class UserConnect1 extends Activity {
 								public void run() {
 								// TODO Auto-generated method stub
 								Intent newAct = new Intent();
-								newAct.setClass(UserConnect1.this, Asgard.class );
+								newAct.setClass(UserConnect1.this,CardChoose.class );
 								Bundle bData = new Bundle();
 								bData.putString("ip", ip);
 								bData.putString("ID", uid);
