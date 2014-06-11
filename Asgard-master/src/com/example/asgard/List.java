@@ -150,7 +150,8 @@ public class List extends Activity {
 					bData.putInt("bid",battleid);
 					// 將 Bundle 指定到 Intent
 					intent.putExtras( bData );
-					
+					LogOut co1 = new LogOut(ip,5000,ID);
+					co1.start();
 			        intent.setClass(List.this,Fight.class);
 			        startActivity(intent);
 				}
@@ -543,6 +544,8 @@ public class List extends Activity {
 											bData.putInt("rcard2",rcard2id);
 											bData.putInt("bid",battleid);
 											// 將 Bundle 指定到 Intent
+											LogOut co1 = new LogOut(ip,5000,ID);
+											co1.start();
 											intent.putExtras( bData );
 									        intent.setClass(List.this,Fight.class);
 									        startActivity(intent);
