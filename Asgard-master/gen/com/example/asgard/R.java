@@ -217,16 +217,18 @@ containing a value of this type.
         public static final int activity_card_choose2=0x7f030002;
         public static final int activity_cardt=0x7f030003;
         public static final int activity_list=0x7f030004;
-        public static final int activity_user_connect1=0x7f030005;
-        public static final int card=0x7f030006;
-        public static final int card01=0x7f030007;
-        public static final int card02=0x7f030008;
-        public static final int cardchoose=0x7f030009;
-        public static final int fight=0x7f03000a;
-        public static final int fragment_cardt=0x7f03000b;
-        public static final int list_item=0x7f03000c;
-        public static final int list_item2=0x7f03000d;
-        public static final int shop=0x7f03000e;
+        public static final int activity_lose=0x7f030005;
+        public static final int activity_user_connect1=0x7f030006;
+        public static final int activity_win=0x7f030007;
+        public static final int card=0x7f030008;
+        public static final int card01=0x7f030009;
+        public static final int card02=0x7f03000a;
+        public static final int cardchoose=0x7f03000b;
+        public static final int fight=0x7f03000c;
+        public static final int fragment_cardt=0x7f03000d;
+        public static final int list_item=0x7f03000e;
+        public static final int list_item2=0x7f03000f;
+        public static final int shop=0x7f030010;
     }
     public static final class menu {
         public static final int asgard=0x7f080000;
@@ -240,7 +242,9 @@ containing a value of this type.
         public static final int title_activity_card_choose2=0x7f060007;
         public static final int title_activity_cardt=0x7f060003;
         public static final int title_activity_list=0x7f060006;
+        public static final int title_activity_lose=0x7f060009;
         public static final int title_activity_user_connect1=0x7f060004;
+        public static final int title_activity_win=0x7f060008;
     }
     public static final class style {
         /** 

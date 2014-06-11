@@ -1,36 +1,21 @@
 package com.example.asgard;
 
 public  class skill {
-	public int type;
-	public int value;
+	public int type;//0:damage , 1:%damage
+	public int hpvalue;
+	public int heal;
+	public int abs;
+	public int natk;
+	int all;
+	int ref;
 	public skill(int ttype,int n)
 	{
-		type =ttype;
-		//純傷害
-		if(type==0)
-		{
-			value = n;
-		}
-		//無視防禦傷害
-		else if(type==1)
-		{
-			value = n;
-		}
-		//造成%數傷害
-		else if(type==2)
-		{
-			value = n;
-		}
-		//連續攻擊
-		else if(type==3)
-		{
-			value = n;
-		}
-		//迴避並造成傷害
-		else if(type==4)
-		{
-			value=n;
-		
-		}
+		type = ttype;
+		hpvalue = n;
+		heal = 0;
+		abs = 0;
+		natk = 0;
+		all = 0;
+		ref = 0;
 	}
 }

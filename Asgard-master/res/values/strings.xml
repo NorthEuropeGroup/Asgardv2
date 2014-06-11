@@ -9,5 +9,7 @@
     <string name="title_activity_card_choose">CardChoose</string>
     <string name="title_activity_list">List</string>
     <string name="title_activity_card_choose2">CardChoose2</string>
+    <string name="title_activity_win">Win</string>
+    <string name="title_activity_lose">Lose</string>
 
 </resources>

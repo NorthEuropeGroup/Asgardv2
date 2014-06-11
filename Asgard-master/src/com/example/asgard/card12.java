@@ -86,7 +86,8 @@ public class card12 extends Activity{
 			};
 			public skill oneskill() {
 				
-				skill s = new skill(0,100);
+				skill s = new skill(1,25);
+				s.all = 1;
 				return s;
 				
 			};

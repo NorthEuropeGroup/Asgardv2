@@ -478,7 +478,7 @@ public class List extends Activity {
 
 					while(isrun==1)
 					{
-						Request.sleep(800);
+						Request.sleep(1000);
 						socket = new Socket(ip,5000);
 
 						out =new DataOutputStream(socket.getOutputStream());

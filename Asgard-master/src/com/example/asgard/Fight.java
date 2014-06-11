@@ -7,7 +7,15 @@ import java.net.Socket;
 
 
 
+
+
+
+import com.example.asgard.List.BATTLERES;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -51,14 +59,23 @@ public class Fight extends Activity {
 	AllCard r2;
 	AllCard m1;
 	AllCard m2;
+	AllCard mm;
 	String tmp;
 	String tmp1;
 	int IsUrTurn;
 	int isrun;
+	int twho;
 	int m1hp;
 	int m2hp;
 	int r1hp;
 	int r2hp;
+	int m1def;
+	int m2def;
+	int r1def;
+	int r2def;
+	int s1pt;
+	int s2pt;
+	AlertDialog alertDialog;
 	Handler notify = new Handler();
 	@Override
 		protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +99,12 @@ public class Fight extends Activity {
 			m2hp = m2.HP();
 			r1hp = r1.HP();
 			r2hp = r2.HP();
+			m1def = 0;
+			m2def = 0;
+			r1def =0;
+			r2def = 0;
+			s1pt = 1;
+			s2pt = 1;
 			tmp = "";
 			IsUrTurn = 0;
 			isrun = 1;
@@ -124,12 +147,16 @@ public class Fight extends Activity {
 		B2 = (Button)findViewById(R.id.rCB2);
 		rBl1 = (ProgressBar)findViewById(R.id.rB1);
 		rBl1.setMax(100);
+		rBl1.setProgress(100);
 		rBl2 = (ProgressBar)findViewById(R.id.rB2);
 		rBl2.setMax(100);
+		rBl2.setProgress(100);
 		Bl1 = (ProgressBar)findViewById(R.id.B1);
 		Bl1.setMax(100);
+		Bl1.setProgress(100);
 		Bl2 = (ProgressBar)findViewById(R.id.B2);
 		Bl2.setMax(100);
+		Bl2.setProgress(100);
 		A1 = (ImageButton)findViewById(R.id.atk1);
 		D1 = (ImageButton)findViewById(R.id.def1);
 		S1 = (ImageButton)findViewById(R.id.skill1);
@@ -154,13 +181,366 @@ public class Fight extends Activity {
 		B2.setOnClickListener(nolistener);
 
 	}
+	public AlertDialog getAlertDialog(String title,String message)
+	{
+		Builder builder = new AlertDialog.Builder(Fight.this);
+		builder.setTitle(title);
+		builder.setMessage(message);
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+
+				}
+				});
+		return builder.create();
+	}
+	public AlertDialog SkillAlert(int who,String description)
+	{
+		twho = who;
+		if(who==0)
+			mm = m1;
+		else
+			mm = m2;
+		Builder builder = new AlertDialog.Builder(Fight.this);
+
+		builder.setTitle(mm.skillName);
+
+		builder.setMessage(description+"\nThis Skill can only be used once\n Do you want to use?");
+		builder.setPositiveButton("Use", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+				A1.setVisibility(View.INVISIBLE);
+				D1.setVisibility(View.INVISIBLE);
+				S1.setVisibility(View.INVISIBLE);
+				A1.setOnClickListener(nolistener);
+				D1.setOnClickListener(nolistener);
+				S1.setOnClickListener(nolistener);
+				A2.setVisibility(View.INVISIBLE);
+				D2.setVisibility(View.INVISIBLE);
+				S2.setVisibility(View.INVISIBLE);
+				A2.setOnClickListener(nolistener);
+				D2.setOnClickListener(nolistener);
+				S2.setOnClickListener(nolistener);
+				if(mm.Skill.all==0)
+				{
+				EnableChoose(twho+2);
+				}
+				else
+				{
+					BATTLESKI a = new BATTLESKI(ip,ID,battleid,0,twho);
+					a.start();
+					SKIView(twho,0);
+				}
+				}
+		});
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+
+				}
+				});
+		return builder.create();
+	}
+	public void SKIView(int c1,int c2)
+	{
+		int damage;
+		skill a;
+		int tl;
+		if(c1==0)
+		{
+			a = m1.Skill;
+			s1pt--;
+		}
+		else
+		{
+			a = m2.Skill;
+			s2pt--;
+		}
+		if(a.all==1)
+		{
+			if(a.type==0)
+			{
+				if(a.abs==0)
+				{
+					damage = a.hpvalue-r1def*r1.DEF();
+					if(damage<0)
+						damage = 0;
+					r1hp-=damage;
+					if(r1hp<0)
+						r1hp = 0;
+					tl = r1hp*100/r1.HP();
+					rBl1.setProgress(tl);
+					damage = a.hpvalue-r2def*r2.DEF();
+					if(damage<0)
+						damage = 0;
+					r2hp-=damage;
+					if(r2hp<0)
+						r2hp = 0;
+					tl = r2hp*100/r2.HP();
+					rBl2.setProgress(tl);
+					
+				}
+				else
+				{
+					damage = a.hpvalue;
+					r1hp-=damage;
+					if(r1hp<0)
+						r1hp = 0;
+					tl = r1hp*100/r1.HP();
+					rBl1.setProgress(tl);
+					damage = a.hpvalue;
+					r2hp-=damage;
+					if(r2hp<0)
+						r2hp = 0;
+					tl = r2hp*100/r2.HP();
+					rBl2.setProgress(tl);
+				}
+			}
+			else
+			{
+				damage = a.hpvalue*100/r1.HP();
+				r1hp-=damage;
+				if(r1hp<0)
+					r1hp = 0;
+				tl = r1hp*100/r1.HP();
+				rBl1.setProgress(tl);
+				damage = a.hpvalue*100/r2.HP();
+				r2hp-=damage;
+				if(r2hp<0)
+					r2hp = 0;
+				tl = r2hp*100/r2.HP();
+				rBl2.setProgress(tl);
+			}
+		}
+		else
+		{
+			if(c2==0)
+			{
+				if(a.type==0)
+				{
+					if(a.abs==0)
+					{
+						damage = a.hpvalue-r1def*r1.DEF();
+						if(damage<0)
+							damage = 0;
+						r1hp-=damage;
+						if(r1hp<0)
+							r1hp = 0;
+						tl = r1hp*100/r1.HP();
+						rBl1.setProgress(tl);
+					}
+					else
+					{
+						damage = a.hpvalue;
+						r1hp-=damage;
+						if(r1hp<0)
+							r1hp = 0;
+						tl = r1hp*100/r1.HP();
+						rBl1.setProgress(tl);
+					}
+				}
+				else
+				{
+					damage = a.hpvalue*100/r1.HP();
+					r1hp-=damage;
+					if(r1hp<0)
+						r1hp = 0;
+					tl = r1hp*100/r1.HP();
+					rBl1.setProgress(tl);
+				}
+			}
+			else if(c2==1)
+			{
+				if(a.type==0)
+				{
+					if(a.abs==0)
+					{
+						damage = a.hpvalue-r2def*r2.DEF();
+						if(damage<0)
+							damage = 0;
+						r2hp-=damage;
+						if(r2hp<0)
+							r2hp = 0;
+						tl = r2hp*100/r2.HP();
+						rBl2.setProgress(tl);
+					}
+					else
+					{
+						damage = a.hpvalue;
+						r2hp-=damage;
+						if(r2hp<0)
+							r2hp = 0;
+						tl = r2hp*100/r2.HP();
+						rBl2.setProgress(tl);
+					}
+				}
+				else
+				{
+					damage = a.hpvalue*100/r2.HP();
+					r2hp-=damage;
+					if(r2hp<0)
+						r2hp = 0;
+					tl = r2hp*100/r2.HP();
+					rBl2.setProgress(tl);
+				}
+			}
+		}
+	}
+	//c1:my card num , c2:rival card num
+	public void BeSKIView(int c1,int c2)
+	{
+		int damage;
+		skill a;
+		int tl;
+		if(c2==0)
+		{
+			a = r1.Skill;
+			
+		}
+		else
+		{
+			a = r2.Skill;
+		}
+		if(a.all==1)
+		{
+			if(a.type==0)
+			{
+				if(a.abs==0)
+				{
+					damage = a.hpvalue-m1def*m1.DEF();
+					if(damage<0)
+						damage = 0;
+					m1hp-=damage;
+					if(m1hp<0)
+						m1hp = 0;
+					tl = m1hp*100/m1.HP();
+					Bl1.setProgress(tl);
+					damage = a.hpvalue-m2def*m2.DEF();
+					if(damage<0)
+						damage = 0;
+					m2hp-=damage;
+					if(m2hp<0)
+						m2hp = 0;
+					tl = m2hp*100/m2.HP();
+					Bl2.setProgress(tl);
+				}
+				else
+				{
+					damage = a.hpvalue;
+					m1hp-=damage;
+					if(m1hp<0)
+						m1hp = 0;
+					tl = m1hp*100/m1.HP();
+					Bl1.setProgress(tl);
+					damage = a.hpvalue;
+					m2hp-=damage;
+					if(m2hp<0)
+						m2hp = 0;
+					tl = m2hp*100/m2.HP();
+					Bl2.setProgress(tl);
+				}
+			}
+			else
+			{
+				damage = a.hpvalue*100/m1.HP();
+				m1hp-=damage;
+				if(m1hp<0)
+					m1hp = 0;
+				tl = m1hp*100/m1.HP();
+				Bl1.setProgress(tl);
+				damage = a.hpvalue*100/m2.HP();
+				m2hp-=damage;
+				if(m2hp<0)
+					m2hp = 0;
+				tl = m2hp*100/m2.HP();
+				Bl2.setProgress(tl);
+			}
+		}
+		else
+		{
+			if(c1==0)
+			{
+				if(a.type==0)
+				{
+					if(a.abs==0)
+					{
+						damage = a.hpvalue-m1def*m1.DEF();
+						if(damage<0)
+							damage = 0;
+						m1hp-=damage;
+						if(m1hp<0)
+							m1hp = 0;
+						tl = m1hp*100/m1.HP();
+						Bl1.setProgress(tl);
+					}
+					else
+					{
+						damage = a.hpvalue;
+						m1hp-=damage;
+						if(m1hp<0)
+							m1hp = 0;
+						tl = m1hp*100/m1.HP();
+						Bl1.setProgress(tl);
+					}
+				}
+				else
+				{
+					damage = a.hpvalue*100/m1.HP();
+					m1hp-=damage;
+					if(m1hp<0)
+						m1hp = 0;
+					tl = m1hp*100/m1.HP();
+					Bl1.setProgress(tl);
+				}
+			}
+			else if(c1==1)
+			{
+				if(a.type==0)
+				{
+					if(a.abs==0)
+					{
+						damage = a.hpvalue-m2def*m2.DEF();
+						if(damage<0)
+							damage = 0;
+						m2hp-=damage;
+						if(m2hp<0)
+							m2hp = 0;
+						tl = m2hp*100/m2.HP();
+						Bl2.setProgress(tl);
+					}
+					else
+					{
+						damage = a.hpvalue;
+						m2hp-=damage;
+						if(m2hp<0)
+							m2hp = 0;
+						tl = m2hp*100/m2.HP();
+						Bl2.setProgress(tl);
+					}
+				}
+				else
+				{
+					damage = a.hpvalue*100/m2.HP();
+					m2hp-=damage;
+					if(m2hp<0)
+						m2hp = 0;
+					tl = m2hp*100/m2.HP();
+					Bl2.setProgress(tl);
+				}
+			}
+		}
+	}
 	public void ATKView(int c1,int c2)
 	{
+		int damage = 0;
 		if(c1==0)
 		{
 			if(c2==0)
 			{
-				r1hp-=m1.ATK();
+				damage = m1.ATK()-r1def*r1.DEF();
+				if(damage<0)
+					damage = 0;
+				r1hp-=damage;
 				if(r1hp<0)
 					r1hp = 0;
 				int tl = r1hp*100/r1.HP();
@@ -168,7 +548,10 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				r2hp-=m1.ATK();
+				damage = m1.ATK()-r2def*r2.DEF();
+				if(damage<0)
+					damage = 0;
+				r2hp-=damage;
 				if(r2hp<0)
 					r2hp = 0;
 				int tl = r2hp*100/r2.HP();
@@ -179,7 +562,11 @@ public class Fight extends Activity {
 		{
 			if(c2==0)
 			{
-				r1hp-=m2.ATK();
+				damage = m2.ATK()-r1def*r1.DEF();
+				if(damage<0)
+					damage = 0;
+				r1hp-=damage;
+
 				if(r1hp<0)
 					r1hp = 0;
 				int tl = r1hp*100/r1.HP();
@@ -187,7 +574,11 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				r2hp-=m2.ATK();
+				damage = m2.ATK()-r2def*r2.DEF();
+				if(damage<0)
+					damage = 0;
+				r2hp-=damage;
+
 				if(r2hp<0)
 					r2hp = 0;
 				int tl = r2hp*100/r2.HP();
@@ -198,11 +589,15 @@ public class Fight extends Activity {
 	//c1:my card num , c2:rival card num
 	public void BeATKView(int c1,int c2)
 	{
+		int damage = 0;
 		if(c1==0)
 		{
 			if(c2==0)
 			{
-				m1hp-=m1.ATK();
+				damage = r1.ATK()-m1def*m1.DEF();
+				if(damage<0)
+					damage = 0;
+				m1hp-=damage;
 				if(m1hp<0)
 					m1hp = 0;
 				int tl = m1hp*100/m1.HP();
@@ -210,7 +605,11 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				m1hp-=m2.ATK();
+				damage = r2.ATK()-m1def*m1.DEF();
+				if(damage<0)
+					damage = 0;
+				m1hp-=damage;
+
 				if(m1hp<0)
 					m1hp = 0;
 				int tl = m1hp*100/m1.HP();
@@ -221,7 +620,10 @@ public class Fight extends Activity {
 		{
 			if(c2==0)
 			{
-				m2hp-=m1.ATK();
+				damage = r1.ATK()-m2def*m2.DEF();
+				if(damage<0)
+					damage = 0;
+				m2hp-=damage;
 				if(m2hp<0)
 					m2hp = 0;
 				int tl = m2hp*100/m2.HP();
@@ -229,7 +631,10 @@ public class Fight extends Activity {
 			}
 			else
 			{
-				m2hp-=m2.ATK();
+				damage = r2.ATK()-m2def*m2.DEF();
+				if(damage<0)
+					damage = 0;
+				m2hp-=damage;
 				if(m2hp<0)
 					m2hp = 0;
 				int tl = m2hp*100/m2.HP();
@@ -315,8 +720,84 @@ public class Fight extends Activity {
 
 					});
 		}
+		else if(cmd==2)
+		{
+			B1.setOnClickListener(
+					new OnClickListener()
+					{
+
+					@Override
+					public void onClick(View v) {
+					// TODO Auto-generated method stub
+					BATTLESKI a = new BATTLESKI(ip,ID,battleid,0,0);
+					a.start();
+					SKIView(0,0);
+					B1.setVisibility(View.INVISIBLE);
+					B2.setVisibility(View.INVISIBLE);
+					B1.setOnClickListener(nolistener);
+					B2.setOnClickListener(nolistener);
+					}
+
+					});
+			B2.setOnClickListener(
+					new OnClickListener()
+					{
+
+					@Override
+					public void onClick(View v) {
+					// TODO Auto-generated method stub
+					BATTLESKI a = new BATTLESKI(ip,ID,battleid,1,0);
+					a.start();
+
+					SKIView(0,1);
+					B1.setVisibility(View.INVISIBLE);
+					B2.setVisibility(View.INVISIBLE);
+					B1.setOnClickListener(nolistener);
+					B2.setOnClickListener(nolistener);
+					}
+
+					});
+		}
+		else if(cmd==3)
+		{
+			B1.setOnClickListener(
+					new OnClickListener()
+					{
+
+					@Override
+					public void onClick(View v) {
+					// TODO Auto-generated method stub
+					BATTLESKI a = new BATTLESKI(ip,ID,battleid,0,1);
+					a.start();
+					SKIView(1,0);
+					B1.setVisibility(View.INVISIBLE);
+					B2.setVisibility(View.INVISIBLE);
+					B1.setOnClickListener(nolistener);
+					B2.setOnClickListener(nolistener);
+					}
+
+					});
+			B2.setOnClickListener(
+					new OnClickListener()
+					{
+
+					@Override
+					public void onClick(View v) {
+					// TODO Auto-generated method stub
+					BATTLESKI a = new BATTLESKI(ip,ID,battleid,1,1);
+					a.start();
+					SKIView(1,1);
+					B1.setVisibility(View.INVISIBLE);
+					B2.setVisibility(View.INVISIBLE);
+					B1.setOnClickListener(nolistener);
+					B2.setOnClickListener(nolistener);
+					}
+
+					});
+		}
 
 	}
+
 	public void Enable(int p)
 	{
 		if(p==0)
@@ -347,6 +828,9 @@ public class Fight extends Activity {
 
 					@Override
 					public void onClick(View v) {
+					m1def = 1;
+					BATTLEDEF a = new BATTLEDEF(ip,ID,battleid,0);
+					a.start();
 					// TODO Auto-generated method stub
 					A1.setVisibility(View.INVISIBLE);
 					D1.setVisibility(View.INVISIBLE);
@@ -364,12 +848,17 @@ public class Fight extends Activity {
 					@Override
 					public void onClick(View v) {
 					// TODO Auto-generated method stub
-					A1.setVisibility(View.INVISIBLE);
-					D1.setVisibility(View.INVISIBLE);
-					S1.setVisibility(View.INVISIBLE);
-					A1.setOnClickListener(nolistener);
-					D1.setOnClickListener(nolistener);
-					S1.setOnClickListener(nolistener);
+					if(s1pt>0)
+					{
+					alertDialog  = SkillAlert(0,m1.skill_intro);
+					alertDialog.show();
+					}
+					else
+					{
+					alertDialog  = getAlertDialog("Waring","You can use this Skill only once");
+					alertDialog.show();
+					}
+
 					}
 
 					});
@@ -402,6 +891,9 @@ public class Fight extends Activity {
 
 					@Override
 					public void onClick(View v) {
+					m2def = 1;
+					BATTLEDEF a = new BATTLEDEF(ip,ID,battleid,1);
+					a.start();
 					// TODO Auto-generated method stub
 					A2.setVisibility(View.INVISIBLE);
 					D2.setVisibility(View.INVISIBLE);
@@ -419,16 +911,120 @@ public class Fight extends Activity {
 					@Override
 					public void onClick(View v) {
 					// TODO Auto-generated method stub
-					A2.setVisibility(View.INVISIBLE);
-					D2.setVisibility(View.INVISIBLE);
-					S2.setVisibility(View.INVISIBLE);
-					A2.setOnClickListener(nolistener);
-					D2.setOnClickListener(nolistener);
-					S2.setOnClickListener(nolistener);
+
+					
+					if(s2pt>0)
+					{
+					alertDialog  = SkillAlert(1,m2.skill_intro);
+					alertDialog.show();
+					}
+					else
+					{
+					alertDialog  = getAlertDialog("Waring","You can use this Skill only once");
+					alertDialog.show();
+					}
 					}
 
 					});
 		}
+	}
+	public class BATTLEDEF extends Thread
+	{
+		String ip;
+		String uID;
+		int port;
+		int BID;
+		int self;
+		public BATTLEDEF(String tip,String tID,int tBID,int tself)
+		{
+			port = 5000;
+			ip = tip;
+			uID = tID;
+			BID = tBID;
+			self = tself;
+		}
+		@Override
+			public void run()
+			{
+				Socket socket = null;
+				try {
+
+					// 宣告輸出至Server的Stream
+					DataOutputStream out ;//=new DataOutputStream(socket.getOutputStream());; 
+					// 宣告讀取自Server的物件
+					BufferedReader in;//= new BufferedReader(new InputStreamReader(socket.getInputStream()));;
+
+
+
+
+
+					socket = new Socket(ip,5000);
+					out =new DataOutputStream(socket.getOutputStream());
+					in= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+					String message = uID;
+					out.writeBytes(message+"\n");
+					out.writeBytes("BATTLEDEF\n");
+					out.writeBytes(String.valueOf(battleid)+"\n");
+					out.writeBytes(String.valueOf(self)+"\n");
+
+
+
+				}
+				catch(Exception e)
+				{
+
+				}
+			}
+	}
+	public class BATTLESKI extends Thread
+	{
+		String ip;
+		String uID;
+		int port;
+		int BID;
+		int target;
+		int atker;
+		public BATTLESKI(String tip,String tID,int tBID,int ttarget,int tatker)
+		{
+			port = 5000;
+			ip = tip;
+			uID = tID;
+			BID = tBID;
+			target = ttarget;
+			atker = tatker;
+		}
+		@Override
+			public void run()
+			{
+				Socket socket = null;
+				try {
+
+					// 宣告輸出至Server的Stream
+					DataOutputStream out ;//=new DataOutputStream(socket.getOutputStream());; 
+					// 宣告讀取自Server的物件
+					BufferedReader in;//= new BufferedReader(new InputStreamReader(socket.getInputStream()));;
+
+
+
+
+
+					socket = new Socket(ip,5000);
+					out =new DataOutputStream(socket.getOutputStream());
+					in= new BufferedReader(new InputStreamReader(socket.getInputStream()));
+					String message = uID;
+					out.writeBytes(message+"\n");
+					out.writeBytes("BATTLESKI\n");
+					out.writeBytes(String.valueOf(battleid)+"\n");
+					out.writeBytes(String.valueOf(atker)+"\n");
+					out.writeBytes(String.valueOf(target)+"\n");
+
+
+				}
+				catch(Exception e)
+				{
+
+				}
+			}
 	}
 	public class BATTLEATK extends Thread
 	{
@@ -509,7 +1105,7 @@ public class Fight extends Activity {
 
 					while(isrun==1)
 					{
-						BATTLEQ.sleep(1000);
+						BATTLEQ.sleep(100);
 						socket = new Socket(ip,5000);
 						out =new DataOutputStream(socket.getOutputStream());
 						in= new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -531,24 +1127,25 @@ public class Fight extends Activity {
 						{
 							String sn = in.readLine();
 							int ns = Integer.valueOf(sn);
-							
+
 							if(ns==0)
 							{
+								m1def = 0;
 								if(m1hp!=0)
 								{
 									out.writeBytes("OK\n");
 									notify.post(new Runnable()
-									{
+											{
 
-										@Override
-										public void run() {
+											@Override
+											public void run() {
 											// TODO Auto-generated method stub
 											Enable(0);
-										}
-										
-									});
-									
-									
+											}
+
+											});
+
+
 								}
 								else
 								{
@@ -557,20 +1154,21 @@ public class Fight extends Activity {
 							}
 							else
 							{
+								m2def = 0;
 								if(m2hp!=0)
 								{
 									out.writeBytes("OK\n");
 									notify.post(new Runnable()
-									{
+											{
 
-										@Override
-										public void run() {
+											@Override
+											public void run() {
 											// TODO Auto-generated method stub
 											Enable(1);
-										}
-										
-									});
-									
+											}
+
+											});
+
 								}
 								else
 								{
@@ -586,18 +1184,57 @@ public class Fight extends Activity {
 							int ta = Integer.valueOf(sta);
 							atker = atk;
 							beatker = ta;
+							if(atker==0)
+								r1def = 0;
+							else if(atker==1)
+								r2def = 0;
 							notify.post(
 									new Runnable()
 									{
 
-										@Override
-										public void run() {
-											// TODO Auto-generated method stub
-											BeATKView(beatker,atker);
-										}
-										
+									@Override
+									public void run() {
+									// TODO Auto-generated method stub
+									BeATKView(beatker,atker);
 									}
-									);
+
+									}
+								   );
+						}
+						else if(buf.equals("BATTLESKI"))
+						{
+							String satk = in.readLine();
+							String sta = in.readLine();
+							int atk = Integer.valueOf(satk);
+							int ta = Integer.valueOf(sta);
+							atker = atk;
+							beatker = ta;
+							if(atker==0)
+								r1def = 0;
+							else if(atker==1)
+								r2def = 0;
+							notify.post(
+									new Runnable()
+									{
+
+									@Override
+									public void run() {
+									// TODO Auto-generated method stub
+									BeSKIView(beatker,atker);
+									}
+
+									}
+								   );
+							
+						}
+						else if(buf.equals("BATTLEDEF"))
+						{
+							String sn = in.readLine();
+							int ns = Integer.valueOf(sn);
+							if(ns==0)
+								r1def = 1;
+							else if(ns==1)
+								r2def = 1;
 						}
 						socket.close();
 					}
@@ -682,3 +1319,4 @@ public class Fight extends Activity {
 
 	};
 }
+
