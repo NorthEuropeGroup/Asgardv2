@@ -99,6 +99,7 @@
             android:name="com.example.asgard.Lose"
             android:label="@string/title_activity_lose" >
         </activity>
+        <activity android:name="Sale"></activity>
     </application>
 
 </manifest>

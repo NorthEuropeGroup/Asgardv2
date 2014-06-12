@@ -90,10 +90,12 @@ private ImageButton.OnTouchListener listener=new ImageButton.OnTouchListener(){
  
            Intent intent = new Intent();
    
-
+           Bundle bData = new Bundle();
+           bData.putString("ID",man.ID);
+           intent.putExtras(bData);
            intent.setClass(Shop.this,UserConnect1.class);
            startActivity(intent);
-           finish();
+           
        }
    };
 
